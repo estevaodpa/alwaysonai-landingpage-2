@@ -65,7 +65,7 @@ export function PhoneVideo() {
         muted
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
       />
 
       {/* Notificação de agendamento — sincronizada com o momento da confirmação */}

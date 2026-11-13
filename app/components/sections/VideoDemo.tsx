@@ -64,10 +64,6 @@ export function VideoDemo() {
               }}
             >
               <source
-                src="/videos/video_demo_ia_agendamento.webm"
-                type="video/webm"
-              />
-              <source
                 src="/videos/video_demo_ia_agendamento.mp4"
                 type="video/mp4"
               />
