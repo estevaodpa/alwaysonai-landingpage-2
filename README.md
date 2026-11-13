@@ -97,7 +97,17 @@ configure as duas em **Settings → Environment Variables**.
 ## Deploy
 
 - **GitHub**: `https://github.com/estevaodpa/alwaysonai-landingpage-2`
-- **Vercel**: importar o repositório, preset Next.js. `output: "export"` é
-  detectado automaticamente e servido como estático.
+- **Vercel**: `https://landingpagealwaysonai2.vercel.app` · projeto `landingpage_alwaysonai_2`
 - O site atual (`alwaysonai-landingpage`, o repo do alwayson.ai) **não é afetado**
   — continua no ar, intocado.
+
+### Redeploy
+
+```bash
+git push                # a Vercel faz o build automático
+# ou, manualmente:
+vercel --prod --yes
+```
+
+> **Deployment Protection** está desativado neste projeto (`ssoProtection: null`).
+> Se for reativado, a LP fica atrás de senha e o tráfego para de funcionar.
