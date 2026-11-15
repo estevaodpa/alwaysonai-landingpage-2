@@ -3,31 +3,31 @@
 Landing page de tráfego para a alwayson.ai. O visitante chega do anúncio, passa
 por um **diagnóstico guiado** dentro da própria página e sai pelo **WhatsApp**.
 
-- **Formato, ritmo e transições** modelados em [botconversa.com.br](https://botconversa.com.br/)
+- **Formato, ritmo, geometria e mecanismos** modelados em
+  [botconversa.com.br](https://botconversa.com.br/)
 - **Conteúdo, identidade, logo, provas e produto** vindos do site alwayson.ai atual
   (`D:\Estêvão\projetos_opencode`)
 
 ---
 
-## Estrutura da página (15 seções, ~17.000px)
+## Estrutura da página (14 seções, ~14.400px em 1440px)
 
 | # | Seção | Anchor |
 |---|---|---|
-| 1 | Nav fixo (logo, links, CTA) | `#top` |
-| 2 | Hero — badges, headline, mockup do celular, segmentado | `#top` |
+| 1 | Nav em vidro flutuante | — |
+| 2 | Hero — badges, headline, grade em perspectiva, pills, mockup do celular | `#top` |
 | 3 | Marquee de clientes | — |
-| 4 | Recursos (4 cards) | `#recursos` |
-| 5 | Números + print do painel | `#resultados` |
-| 6 | Como funciona em 3 passos | `#como-funciona` |
-| 7 | Nichos (odontologia, estética, clínica geral) | `#nichos` |
-| 8 | Painel / kanban + tabela de contatos | `#painel` |
-| 9 | Personalização (IA genérica vs. personalizada) | `#personalizacao` |
-| 10 | Comparação "Hoje vs. Com a alwayson.ai" | `#comparacao` |
-| 11 | Entregue pronto | `#pronto` |
-| 12 | Vídeo de demonstração | `#demo` |
-| 13 | **Diagnóstico** (7 perguntas → contato → WhatsApp) | `#diagnostico` |
-| 14 | Provas sociais (4 conversas reais) | `#depoimentos` |
-| 15 | Fechamento + FAQ + rodapé | `#faq` |
+| 4 | Recursos — mosaico 4×2 com card de borda azul | `#recursos` |
+| 5 | Como funciona em 3 passos | `#como-funciona` |
+| 6 | Nichos (5 clínicas + print real) | `#nichos` |
+| 7 | Painel / kanban + tabela de contatos | `#painel` |
+| 8 | Integrações + fluxo de automação | `#integracoes` |
+| 9 | Comparação "Hoje vs. Com a alwayson.ai" | `#comparacao` |
+| 10 | Entregue pronto | `#pronto` |
+| 11 | Vídeo de demonstração | `#demo` |
+| 12 | **Diagnóstico** (7 perguntas → contato → WhatsApp) | `#diagnostico` |
+| 13 | Para empresas (foto + CTA especialista) | — |
+| 14 | Curva azul → Provas sociais → FAQ → Rodapé | `#depoimentos` · `#faq` |
 
 O bloco de **diagnóstico ocupa o slot onde o botconversa tem o Pricing**: mesma
 posição na narrativa, mesmo peso visual.
@@ -36,8 +36,8 @@ posição na narrativa, mesmo peso visual.
 
 ## Diagnóstico (o núcleo da conversão)
 
-- **7 perguntas** copiadas de `app/lib/diagnostic.ts` (que veio verbatim do site
-  alwayson.ai atual), incluindo a pergunta condicional de canais de marketing.
+- **7 perguntas** copiadas de `app/lib/diagnostic.ts` (verbatim do site alwayson.ai
+  atual), incluindo a pergunta condicional de canais de marketing.
 - **Inline na página**, não em modal. Uma pergunta por vez, com barra de progresso.
 - Salvamento progressivo a cada resposta (`status: "em_andamento"`, `save_seq`
   incremental) — o lead não se perde se a pessoa fechar a aba.
@@ -54,20 +54,21 @@ posição na narrativa, mesmo peso visual.
 
 ## Identidade visual
 
-Tokens em `app/globals.css` (copiados do site atual) + camada de componentes em
-`app/ui.css`.
+Tokens em `app/globals.css` + camada de componentes em `app/ui.css`.
+Detalhe completo da geometria e dos mecanismos em [`DESIGN.md`](./DESIGN.md).
 
 | Token | Valor |
 |---|---|
-| Fundo base / body / lift | `#08090c` · `#0b0e13` · `#12161d` |
-| Texto | `#f5f6f7` · `#9ba1ac` · `#5c6370` |
-| Gradiente da marca | `#0050c8` → `#00a8ff` (135deg) |
-| Card | raio 20px, `#11151c`, borda `rgba(255,255,255,.1)` |
-| Botão primário | gradiente sólido, raio pill, uppercase, glow |
+| Fundo claro / escuro | `#f7faff` · `#18191c` |
+| Texto | `#18191c` · `#2f3238` · `#6d6f74` |
+| Gradiente da marca | `#0050c8` → `#00a8ff` |
+| Botão | `#1e9cff` → `#0050c8`, raio 8px |
+| Card | raio 16px, `#18191c`, borda gradiente de 1px |
 | Tipografia | Geist Sans |
 
-O logo alwayson tem wordmark **branco** em fundo transparente — por isso a LP é
-dark-first. Não existe versão clara do logo.
+O logo alwayson tem wordmark branco no arquivo oficial. O lockup da LP2 é
+**símbolo PNG + wordmark em texto**, com duas variantes (`dark` para fundo claro,
+`light` para fundo escuro) — assim o mesmo logo funciona nos dois temas.
 
 ---
 

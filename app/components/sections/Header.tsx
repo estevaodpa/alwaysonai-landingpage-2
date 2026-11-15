@@ -1,22 +1,22 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { Logo } from "../ui/Logo";
 import { nav } from "../../lib/copy";
 import { trackCtaClick } from "../../lib/analytics";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 export function Header() {
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
 
   const handleCta = (e: React.MouseEvent, location: string) => {
     e.preventDefault();
@@ -29,63 +29,49 @@ export function Header() {
 
   return (
     <motion.header
-      initial={{ y: -64 }}
+      initial={{ y: -80 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: EASE }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-[var(--bg-base)]/85 backdrop-blur-xl border-b border-[var(--border-subtle)]"
-          : "bg-transparent border-b border-transparent"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 h-16 px-4"
     >
-      <div className="lp-container h-16 flex items-center justify-between gap-6">
+      <div
+        className="lp-glass h-14 flex items-center gap-3 pl-2 pr-3 py-3 backdrop-blur-[10px]"
+        style={{ borderRadius: 12 }}
+      >
         {/* Logo */}
         <a href="#top" className="flex items-center shrink-0">
-          <Image
-            src="/logos/alwayson-logo-text-transparent-crop.png"
-            alt="alwayson.ai"
-            width={1094}
-            height={158}
-            priority
-            className="hidden sm:block"
-            style={{ height: "34px", width: "auto" }}
-          />
-          <Image
-            src="/logos/alwayson-logo-symbol-crop.png"
-            alt="alwayson.ai"
-            width={200}
-            height={151}
-            priority
-            className="sm:hidden"
-            style={{ height: "30px", width: "auto" }}
-          />
+          <Logo variant="dark" height={26} />
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-12 ml-6">
           {nav.links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors duration-150"
+              className="text-sm transition-opacity duration-150 hover:opacity-60"
+              style={{ color: "#212327" }}
             >
               {link.label}
             </a>
           ))}
         </nav>
 
+        <div className="flex-1" />
+
         {/* Desktop actions */}
         <div className="hidden lg:flex items-center gap-3">
           <a
             href="#"
-            className="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors duration-150"
+            className="text-sm transition-opacity duration-150 hover:opacity-60"
+            style={{ color: "#212327" }}
           >
             {nav.login}
           </a>
           <a
             href="#diagnostico"
             onClick={(e) => handleCta(e, "header")}
-            className="lp-btn-secondary !py-2.5 !px-5 !text-[0.8125rem]"
+            className="lp-btn !py-2.5 !px-5 !text-[0.8125rem] !rounded-[10px]"
           >
             {nav.cta}
           </a>
@@ -99,17 +85,17 @@ export function Header() {
           aria-expanded={menuOpen}
         >
           <span
-            className={`w-5 h-0.5 bg-[var(--text-primary)] transition-all duration-300 ${
+            className={`w-5 h-0.5 bg-[#212327] transition-all duration-300 ${
               menuOpen ? "rotate-45 translate-y-2" : ""
             }`}
           />
           <span
-            className={`w-5 h-0.5 bg-[var(--text-primary)] transition-all duration-300 ${
+            className={`w-5 h-0.5 bg-[#212327] transition-all duration-300 ${
               menuOpen ? "opacity-0" : ""
             }`}
           />
           <span
-            className={`w-5 h-0.5 bg-[var(--text-primary)] transition-all duration-300 ${
+            className={`w-5 h-0.5 bg-[#212327] transition-all duration-300 ${
               menuOpen ? "-rotate-45 -translate-y-2" : ""
             }`}
           />
@@ -120,19 +106,21 @@ export function Header() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: EASE }}
-            className="lg:hidden bg-[var(--bg-base)]/95 backdrop-blur-xl border-b border-[var(--border-subtle)] overflow-hidden"
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.25, ease: EASE }}
+            className="lg:hidden fixed inset-0 top-16 z-40 px-4 pt-8"
+            style={{ background: "rgba(247,250,255,0.96)" }}
           >
-            <nav className="lp-container flex flex-col gap-5 py-8">
+            <nav className="flex flex-col gap-6">
               {nav.links.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="text-lg text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+                  className="text-2xl font-semibold"
+                  style={{ color: "#18191c" }}
                 >
                   {link.label}
                 </a>
@@ -140,7 +128,7 @@ export function Header() {
               <a
                 href="#diagnostico"
                 onClick={(e) => handleCta(e, "header_mobile")}
-                className="lp-btn-primary mt-2 w-full"
+                className="lp-btn mt-4 w-full"
               >
                 {nav.cta}
               </a>

@@ -16,7 +16,7 @@ export const nav = {
   links: [
     { label: "Como funciona", href: "#como-funciona" },
     { label: "Recursos", href: "#recursos" },
-    { label: "Resultados", href: "#resultados" },
+    { label: "Painel", href: "#painel" },
     { label: "Perguntas", href: "#faq" },
   ],
   login: "Entrar na plataforma",
@@ -27,19 +27,14 @@ export const nav = {
 export const hero = {
   badges: [
     { label: "Feito para clínicas de saúde", kind: "outline" as const },
-    { label: "Novo: Diagnóstico da sua clínica", kind: "new" as const },
+    { label: "Diagnóstico da sua clínica", kind: "new" as const },
   ],
-  titleLine1: "Seu paciente chega no WhatsApp.",
-  titleLine2: "A resposta chega na hora.",
+  titleLine1: "Seu WhatsApp atendendo, qualificando e",
+  titleLine2: "agendando 24 horas por dia",
   support:
     "A IA da alwayson.ai responde na hora, tira dúvidas, qualifica o paciente e marca o horário. Sua equipe só entra quando a venda está pronta.",
-  cta: "FAZER DIAGNÓSTICO GRÁTIS",
-  ctaMicro: "Leva cerca de 2 minutos. Sem compromisso.",
-  facts: [
-    { label: "Resposta em segundos", detail: "a qualquer hora do dia" },
-    { label: "Lead qualificado", detail: "com contexto e intenção" },
-    { label: "Horário marcado", detail: "direto na sua agenda" },
-  ],
+  cta: "COMEÇAR AGORA",
+  ctaMicro: "Faça o diagnóstico da sua clínica. Leva 2 minutos.",
 };
 
 // ── Marquee de clientes ─────────────────────────────────────────────────────
@@ -56,10 +51,16 @@ export const marquee = {
 // ── Recursos ────────────────────────────────────────────────────────────────
 export const features = {
   kicker: "O sistema completo",
-  title: "Não é só uma IA respondendo seu WhatsApp.",
-  titleHi: "É o atendimento inteiro trabalhando junto.",
+  title: "Toda a operação de atendimento da sua clínica, dentro do WhatsApp.",
+  titleHi: "",
   support:
     "Você monta sem programar, conecta com as ferramentas que já usa e acompanha cada resultado em tempo real. Sem contratar ninguém.",
+  flow: [
+    { label: "Paciente chama no WhatsApp" },
+    { label: "A IA entende e responde" },
+    { label: "Qualifica o paciente" },
+    { label: "Agenda o horário" },
+  ],
   items: [
     {
       tag: "01",
@@ -70,12 +71,12 @@ export const features = {
     {
       tag: "02",
       title: "Qualifica o lead",
-      body: "Faz as perguntas certas, identifica o procedimento de interesse, registra a origem e separa quem está pronto para comprar de quem ainda não.",
+      body: "Faz as perguntas certas, identifica o procedimento de interesse e separa quem está pronto para comprar de quem ainda não.",
       bullets: ["Origem registrada", "Procedimento identificado", "Intenção mapeada"],
     },
     {
       tag: "03",
-      title: "Agenda sozinho",
+      title: "Do “oi” ao horário marcado, sozinho",
       body: "Consulta a agenda, oferece horários livres, marca a consulta e confirma o horário na própria conversa. Ninguém precisa encostar no celular.",
       bullets: ["Agenda integrada", "Confirmação automática", "Zero retrabalho"],
     },
@@ -85,22 +86,6 @@ export const features = {
       body: "Quantas conversas chegaram, quantas viraram agendamento e onde o paciente travou. Decida com números, não no achismo.",
       bullets: ["Painel da operação", "Histórico de contatos", "Exportação"],
     },
-  ],
-};
-
-// ── Números ─────────────────────────────────────────────────────────────────
-export const metrics = {
-  kicker: "O resultado na prática",
-  title: "Números de uma operação rodando.",
-  support:
-    "Não é promessa. É o painel de uma clínica que atende, qualifica e agenda todos os dias.",
-  image: "/produto/numeros_atendimentos.png",
-  imageAlt:
-    "Visão geral do atendimento no WhatsApp — atendimentos iniciados, agendamentos gerados e taxa de conversão",
-  stats: [
-    { value: "342", label: "Atendimentos iniciados", hint: "Total de conversas iniciadas no WhatsApp" },
-    { value: "264", label: "Agendamentos gerados", hint: "Conversas que viraram agendamento" },
-    { value: "77,2%", label: "Taxa de conversão", hint: "Percentual de atendimentos que viraram agendamento" },
   ],
 };
 
@@ -140,24 +125,38 @@ export const niches = {
   items: [
     {
       name: "Odontologia",
-      quote: "Quanto custa o implante?",
+      question: "Quanto custa o implante?",
       answer:
         "Responde com o valor que você ensinou, explica o que está incluso, fala de parcelamento e já puxa o próximo passo.",
       image: "/produto/leads_e_procedimentos_odontologia.png",
     },
     {
       name: "Estética",
-      quote: "Tem horário essa semana?",
+      question: "Tem horário essa semana?",
       answer:
         "Consulta a sua agenda, oferece os horários livres e marca sem ninguém da equipe encostar no celular.",
       image: "/produto/leads_e_procedimentos_esteticista.png",
     },
     {
-      name: "Clínica geral",
-      quote: "Vocês atendem convênio?",
+      name: "Dermatologia",
+      question: "Vocês atendem convênio?",
       answer:
         "Informa as regras do seu consultório, explica as condições de pagamento e segue com o pedido do paciente.",
       image: "/produto/leads_e_procedimentos_medico.png",
+    },
+    {
+      name: "Clínica geral",
+      question: "A consulta é particular?",
+      answer:
+        "Explica as formas de pagamento, os convênios aceitos e agenda a avaliação sem ninguém da equipe encostar no celular.",
+      image: "/produto/leads_e_procedimentos_medico.png",
+    },
+    {
+      name: "Fisioterapia",
+      question: "Preciso de encaminhamento?",
+      answer:
+        "Confere o protocolo da sua clínica, informa a documentação necessária e deixa o próximo passo agendado.",
+      image: "/produto/leads_e_procedimentos_esteticista.png",
     },
   ],
 };
@@ -285,6 +284,47 @@ export const diagnostic = {
     "Uma conversa para entender sua clínica e mostrar a operação funcionando na prática.",
 };
 
+// ── Integrações ─────────────────────────────────────────────────────────────
+export const integrations = {
+  title: "Integrações",
+  support:
+    "Conecte as ferramentas que a sua clínica já usa. Quando algo acontece no WhatsApp, o resto acontece sozinho.",
+  items: [
+    { label: "Google Agenda", short: "GA" },
+    { label: "Google Planilhas", short: "GS" },
+    { label: "WhatsApp API oficial", short: "WA" },
+    { label: "n8n", short: "N8" },
+    { label: "CRM de vendas", short: "CRM" },
+    { label: "Pagamentos", short: "PIX" },
+    { label: "Meta Ads", short: "AD" },
+    { label: "E-mail", short: "@" },
+  ],
+  flowTitle: "Agendou pelo WhatsApp",
+  flowCount: "4 etapas · ativa",
+  flow: [
+    {
+      step: "Etapa 1",
+      title: "alwayson.ai: evento do atendimento",
+      detail: "Mariana agendou pelo WhatsApp — Sexta, 16h30 · avaliação",
+    },
+    {
+      step: "Etapa 2",
+      title: "Google Agenda: criar evento",
+      detail: "Avaliação · Mariana Souza — Agenda da clínica, sex 16h30",
+    },
+    {
+      step: "Etapa 3",
+      title: "Google Planilhas: adicionar linha",
+      detail: "Agendamentos 2026 — Nova linha com nome, procedimento e data",
+    },
+    {
+      step: "Etapa 4",
+      title: "n8n: enviar confirmação",
+      detail: "Link de confirmação enviado no WhatsApp",
+    },
+  ],
+};
+
 // ── Provas sociais ──────────────────────────────────────────────────────────
 export const testimonials = {
   kicker: "Quem usa",
@@ -298,6 +338,8 @@ export const testimonials = {
     {
       name: "Júlia Marinho",
       profession: "Esteticista",
+      quote:
+        "Recebia reclamação todo dia por demora e a equipe vivia sobrecarregada. Com a IA da alwayson.ai, ela entende o paciente, responde a qualquer hora e até fecha venda sozinha. Na primeira semana o tempo de resposta já tinha caído para menos de uma hora.",
       image: "/proofs/julia.png",
       width: 600,
       height: 404,
@@ -306,6 +348,8 @@ export const testimonials = {
     {
       name: "Giuliano Clovalski",
       profession: "Implante",
+      quote:
+        "Nosso fluxo antigo falhava toda vez que o cliente saía do menu, e as conversas se perdiam. Agora o assistente conversa de forma natural e responde perguntas detalhadas sobre os procedimentos.",
       image: "/proofs/giuliano.png",
       width: 600,
       height: 405,
@@ -314,6 +358,8 @@ export const testimonials = {
     {
       name: "Larissa Otorrino",
       profession: "Otorrino",
+      quote:
+        "Atender pacientes era grupo de WhatsApp sem fim e planilha manual. Com a alwayson.ai padronizei o atendimento, automatizei as planilhas e hoje atendemos mais gente por dia.",
       image: "/proofs/larissa.png",
       width: 600,
       height: 400,
@@ -322,6 +368,8 @@ export const testimonials = {
     {
       name: "Doutora Camila Sousa",
       profession: "Dentista",
+      quote:
+        "Percebi que a demora para responder estava me custando consultas. Com a alwayson.ai automatizei agendamentos e orçamentos, e ninguém mais espera. Depois da IA, os pacientes quase não pedem para falar com uma pessoa.",
       image: "/proofs/camilla.png",
       width: 600,
       height: 409,
@@ -406,7 +454,7 @@ export const footer = {
       links: [
         { label: "Como funciona", href: "#como-funciona" },
         { label: "Recursos", href: "#recursos" },
-        { label: "Resultados", href: "#resultados" },
+        { label: "Painel da clínica", href: "#painel" },
         { label: "Diagnóstico", href: "#diagnostico" },
       ],
     },

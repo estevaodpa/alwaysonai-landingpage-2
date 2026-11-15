@@ -2,58 +2,57 @@
 @import "./ui.css";
 
 :root {
-  /* ── Colors (extracted from alwayson.ai logo) ── */
-  --bg-base: #08090c;
-  --bg-surface: #0f1115;
-  --bg-elevated: #15181d;
+  /* ── Fundos (ritmo light-first do modelo, neutros) ── */
+  --bg-light: #f7faff;
+  --bg-white: #ffffff;
+  --bg-dark: #0f1012;
+  --bg-dark-2: #18191c;
+  --bg-dark-3: #101114;
 
-  /* ── Levels de seção (LP2) ── */
-  --bg-body: #0b0e13;
-  --bg-lift: #12161d;
-  --surface-card: #11151c;
-  --surface-card-2: #161a22;
-  --text-primary: #f5f6f7;
-  --text-secondary: #9ba1ac;
-  --text-tertiary: #5c6370;
+  /* ── Texto sobre fundo claro ── */
+  --ink: #18191c;
+  --ink-2: #2f3238;
+  --ink-3: #6d6f74;
+  --ink-4: #acadaf;
 
-  /* Brand gradient — royal blue → cyan blue (matches logo) */
-  --accent-royal: #0050c8;
-  --accent-cyan: #00a8ff;
-  --accent: #00a8ff;
-  --accent-hover: #33bbff;
-  --accent-muted: rgba(0, 168, 255, 0.12);
-  --accent-glow: rgba(0, 168, 255, 0.25);
-  --accent-deep: rgba(0, 80, 200, 0.4);
+  /* ── Texto sobre fundo escuro ── */
+  --on-dark: #ffffff;
+  --on-dark-2: #c9ced6;
+  --on-dark-3: rgba(255, 255, 255, 0.45);
 
-  /* Gradient string for use in backgrounds/borders */
-  --gradient-brand: linear-gradient(
+  /* ── Marca alwayson (royal → cyan) ── */
+  --brand: #00a8ff;
+  --brand-2: #0050c8;
+  --brand-grad: linear-gradient(135deg, #0050c8 0%, #00a8ff 100%);
+  /* Botão: claro → profundo, como no modelo (legibilidade sobre fundo claro) */
+  --brand-grad-btn: linear-gradient(135deg, #1e9cff 0%, #0050c8 100%);
+  --brand-grad-soft: linear-gradient(
     135deg,
-    var(--accent-royal) 0%,
-    var(--accent-cyan) 100%
+    rgba(0, 80, 200, 0.14) 0%,
+    rgba(0, 168, 255, 0.14) 100%
   );
-  --gradient-brand-soft: linear-gradient(
-    135deg,
-    rgba(0, 80, 200, 0.15) 0%,
-    rgba(0, 168, 255, 0.15) 100%
-  );
+  --brand-glow: rgba(0, 168, 255, 0.28);
 
-  --border-subtle: rgba(255, 255, 255, 0.06);
-  --border-default: rgba(255, 255, 255, 0.1);
-  --border-accent: rgba(0, 168, 255, 0.2);
+  /* ── Bordas ── */
+  --line-light: rgba(24, 25, 28, 0.12);
+  --line-dark: rgba(255, 255, 255, 0.08);
+  --line-brand: rgba(0, 168, 255, 0.35);
 
-  /* ── Radius ── */
+  /* ── Raio ── */
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 16px;
+  --radius-xl: 24px;
   --radius-full: 9999px;
 
-  /* ── Shadows ── */
+  /* ── Sombra ── */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --shadow-card: 0 1px 20px rgba(0, 0, 0, 0.03);
   --shadow-glow: 0 0 32px rgba(0, 168, 255, 0.2);
 
-  /* ── Animation ── */
+  /* ── Animação ── */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --duration-fast: 150ms;
@@ -62,22 +61,23 @@
 }
 
 @theme inline {
-  --color-bg-base: var(--bg-base);
-  --color-bg-surface: var(--bg-surface);
-  --color-bg-elevated: var(--bg-elevated);
-  --color-text-primary: var(--text-primary);
-  --color-text-secondary: var(--text-secondary);
-  --color-text-tertiary: var(--text-tertiary);
-  --color-border-subtle: var(--border-subtle);
-  --color-border-default: var(--border-default);
-  --color-border-accent: var(--border-accent);
-  --color-accent: var(--accent);
-  --color-accent-cyan: var(--accent-cyan);
-  --color-accent-royal: var(--accent-royal);
-  --color-accent-hover: var(--accent-hover);
-  --color-accent-muted: var(--accent-muted);
-  --color-accent-glow: var(--accent-glow);
-  --color-accent-deep: var(--accent-deep);
+  --color-bg-light: var(--bg-light);
+  --color-bg-white: var(--bg-white);
+  --color-bg-dark: var(--bg-dark);
+  --color-bg-dark-2: var(--bg-dark-2);
+  --color-bg-dark-3: var(--bg-dark-3);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-ink-4: var(--ink-4);
+  --color-on-dark: var(--on-dark);
+  --color-on-dark-2: var(--on-dark-2);
+  --color-on-dark-3: var(--on-dark-3);
+  --color-brand: var(--brand);
+  --color-brand-2: var(--brand-2);
+  --color-line-light: var(--line-light);
+  --color-line-dark: var(--line-dark);
+  --color-line-brand: var(--line-brand);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -88,16 +88,16 @@ html {
 }
 
 body {
-  background: var(--bg-base);
-  color: var(--text-primary);
+  background: var(--bg-light);
+  color: var(--ink);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background: var(--accent-muted);
-  color: var(--text-primary);
+  background: rgba(0, 168, 255, 0.18);
+  color: var(--ink);
 }
 
 /* ── Custom scrollbar (chat) ── */

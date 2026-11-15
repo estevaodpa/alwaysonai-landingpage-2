@@ -1,39 +1,25 @@
-"use client";
-
-import Image from "next/image";
 import Link from "next/link";
+import { Logo } from "../ui/Logo";
 import { brand, footer } from "../../lib/copy";
 
 export function Footer() {
   return (
-    <footer
-      className="relative border-t px-6 py-14 lg:py-16"
-      style={{
-        borderColor: "var(--border-subtle)",
-        background: "var(--bg-base)",
-      }}
-    >
+    <footer className="relative bg-[var(--bg-white)] px-5 md:px-8 pt-12 pb-10">
       <div className="lp-container">
-        <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_2fr] gap-10 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_2fr] gap-10 lg:gap-16">
           {/* Marca */}
           <div>
-            <Image
-              src="/logos/alwayson-logo-text-transparent-crop.png"
-              alt="alwayson.ai"
-              width={1094}
-              height={158}
-              style={{ height: "34px", width: "auto" }}
-            />
+            <Logo variant="dark" height={32} />
             <div
               className="mt-6 w-16 h-px"
               style={{
                 background:
-                  "linear-gradient(90deg, transparent, rgba(77,195,255,0.25), transparent)",
+                  "linear-gradient(90deg, transparent, rgba(0,80,200,0.3), transparent)",
               }}
             />
             <p
-              className="mt-5 text-sm"
-              style={{ color: "var(--text-tertiary)", maxWidth: 320 }}
+              className="mt-5 text-sm leading-relaxed"
+              style={{ color: "var(--ink-3)", maxWidth: 320 }}
             >
               {footer.description}
             </p>
@@ -44,8 +30,8 @@ export function Footer() {
             {footer.columns.map((col) => (
               <div key={col.title}>
                 <h3
-                  className="text-xs font-semibold uppercase tracking-[0.14em]"
-                  style={{ color: "var(--text-tertiary)" }}
+                  className="lp-label"
+                  style={{ color: "var(--ink-3)" }}
                 >
                   {col.title}
                 </h3>
@@ -54,8 +40,8 @@ export function Footer() {
                     <li key={l.label}>
                       <Link
                         href={l.href}
-                        className="text-sm transition-colors"
-                        style={{ color: "var(--text-secondary)" }}
+                        className="text-sm transition-opacity duration-150 hover:opacity-60"
+                        style={{ color: "var(--ink-2)" }}
                       >
                         {l.label}
                       </Link>
@@ -68,13 +54,13 @@ export function Footer() {
         </div>
 
         <div
-          className="mt-12 pt-8 border-t flex flex-col sm:flex-row items-center justify-between gap-3"
-          style={{ borderColor: "var(--border-subtle)" }}
+          className="mt-12 pt-6 border-t flex flex-col sm:flex-row items-center justify-between gap-3"
+          style={{ borderColor: "rgba(24,25,28,0.08)" }}
         >
-          <p className="text-xs" style={{ color: "var(--text-tertiary)" }}>
+          <p className="text-xs" style={{ color: "var(--ink-3)" }}>
             © {new Date().getFullYear()} {brand.name}
           </p>
-          <p className="text-xs" style={{ color: "var(--text-tertiary)" }}>
+          <p className="text-xs" style={{ color: "var(--ink-3)" }}>
             Todos os direitos reservados.
           </p>
         </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { comparison } from "../../lib/copy";
-import { Reveal, Section } from "../ui/primitives";
+import { Reveal } from "../ui/primitives";
 
 function Column({
   label,
@@ -15,36 +15,32 @@ function Column({
   const isAfter = variant === "after";
   return (
     <div
-      className="h-full rounded-2xl p-6 lg:p-8"
+      className="rounded-2xl p-6 lg:p-8 h-full flex flex-col gap-6"
       style={{
-        background: isAfter
-          ? "linear-gradient(135deg, rgba(0,80,200,0.18) 0%, rgba(0,168,255,0.10) 100%)"
-          : "rgba(255,255,255,0.02)",
-        border: `1px solid ${isAfter ? "var(--border-accent)" : "var(--border-subtle)"}`,
+        background: isAfter ? "rgba(0,120,255,0.10)" : "rgba(255,255,255,0.03)",
+        border: `1px solid ${isAfter ? "rgba(0,168,255,0.3)" : "rgba(255,255,255,0.07)"}`,
       }}
     >
       <span
-        className="text-xs font-semibold uppercase tracking-[0.16em]"
-        style={{ color: isAfter ? "var(--accent-cyan)" : "var(--text-tertiary)" }}
+        className="lp-label"
+        style={{ color: isAfter ? "#4dc3ff" : "var(--on-dark-3)" }}
       >
         {label}
       </span>
 
-      <ul className="mt-6 flex flex-col gap-4">
+      <ul className="flex flex-col gap-4 flex-1">
         {rows.map((r) => (
           <li key={r} className="flex items-start gap-3">
             <span
-              className="mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full"
+              className="mt-2 w-1.5 h-1.5 rounded-full shrink-0"
               style={{
-                background: isAfter ? "var(--accent-cyan)" : "rgba(255,255,255,0.2)",
+                background: isAfter ? "#4dc3ff" : "rgba(255,255,255,0.22)",
               }}
               aria-hidden="true"
             />
             <span
-              className="text-sm lg:text-base leading-relaxed"
-              style={{
-                color: isAfter ? "var(--text-primary)" : "var(--text-tertiary)",
-              }}
+              className="text-base leading-relaxed"
+              style={{ color: isAfter ? "var(--on-dark)" : "var(--on-dark-3)" }}
             >
               {r}
             </span>
@@ -57,15 +53,16 @@ function Column({
 
 export function Comparison() {
   return (
-    <Section id="comparacao" surface="base">
-      <div className="lp-container">
+    <section id="comparacao" className="relative pt-16 lg:pt-[72px] pb-16 lg:pb-[72px]">
+      <div className="lp-container flex flex-col gap-10">
         <Reveal>
           <h2 className="lp-h2 text-center" style={{ maxWidth: 760, marginInline: "auto" }}>
             {comparison.title}
           </h2>
         </Reveal>
 
-        <div className="mt-12 lg:mt-16 grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5">
+        {/* Grid com gap 8px, igual ao modelo */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
           <Reveal>
             <Column
               label={comparison.before.label}
@@ -73,7 +70,7 @@ export function Comparison() {
               variant="before"
             />
           </Reveal>
-          <Reveal delay={0.1}>
+          <Reveal delay={0.08}>
             <Column
               label={comparison.after.label}
               rows={comparison.after.rows}
@@ -82,18 +79,15 @@ export function Comparison() {
           </Reveal>
         </div>
 
-        <Reveal delay={0.16}>
+        <Reveal delay={0.14}>
           <p
-            className="mt-10 text-center font-medium"
-            style={{
-              fontSize: "clamp(1.05rem, 1.8vw, 1.3rem)",
-              color: "var(--text-secondary)",
-            }}
+            className="text-center font-medium"
+            style={{ fontSize: "1.125rem", color: "var(--on-dark-2)" }}
           >
             {comparison.footnote}
           </p>
         </Reveal>
       </div>
-    </Section>
+    </section>
   );
 }

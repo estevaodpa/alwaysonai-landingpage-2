@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { video } from "../../lib/copy";
-import { Reveal, Section, SectionHead } from "../ui/primitives";
+import { Reveal } from "../ui/primitives";
 
 export function VideoDemo() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -28,22 +28,27 @@ export function VideoDemo() {
   }, []);
 
   return (
-    <Section id="demo" surface="base">
-      <div className="lp-container">
-        <SectionHead
-          kicker={video.kicker}
-          title={video.title}
-          titleHi={video.titleHi}
-          support={video.support}
-        />
+    <section id="demo" className="relative pt-16 lg:pt-[72px] pb-16 lg:pb-[72px]">
+      <div className="lp-container flex flex-col items-center gap-8">
+        <Reveal>
+          <h2 className="lp-h2 text-center" style={{ maxWidth: 760 }}>
+            {video.title}{" "}
+            <span className="lp-accent">{video.titleHi}</span>
+          </h2>
+        </Reveal>
+        <Reveal delay={0.08}>
+          <p className="lp-lead lp-lead-dark text-center" style={{ maxWidth: 700 }}>
+            {video.support}
+          </p>
+        </Reveal>
 
-        <Reveal delay={0.12}>
+        <Reveal delay={0.14}>
           <div
-            className="relative mt-12 lg:mt-16 mx-auto overflow-hidden"
+            className="relative w-full overflow-hidden mt-4"
             style={{
               maxWidth: 900,
               borderRadius: 20,
-              border: "1px solid var(--border-default)",
+              border: "1px solid rgba(255,255,255,0.1)",
               background: "#000",
               boxShadow: "0 30px 90px rgba(0,0,0,0.55)",
             }}
@@ -71,6 +76,6 @@ export function VideoDemo() {
           </div>
         </Reveal>
       </div>
-    </Section>
+    </section>
   );
 }

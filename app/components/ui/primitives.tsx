@@ -4,13 +4,12 @@ import { type ReactNode } from "react";
 import { motion } from "framer-motion";
 import type { Seg } from "../../lib/copy";
 
-const CYAN = "#4dc3ff";
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 // ── Segmented text with highlighted spans ───────────────────────────────────
 export function Hi({ children }: { children: ReactNode }) {
   return (
-    <strong style={{ color: CYAN, fontWeight: 700 }} className="font-bold">
+    <strong style={{ color: "#00a8ff", fontWeight: 700 }} className="font-bold">
       {children}
     </strong>
   );
@@ -42,7 +41,7 @@ export function Segs({
 export function Reveal({
   children,
   delay = 0,
-  y = 28,
+  y = 24,
   className,
 }: {
   children: ReactNode;
@@ -54,8 +53,8 @@ export function Reveal({
     <motion.div
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-12% 0px" }}
-      transition={{ duration: 0.7, delay, ease: EASE }}
+      viewport={{ once: true, margin: "-10% 0px" }}
+      transition={{ duration: 0.6, delay, ease: EASE }}
       className={className}
     >
       {children}
@@ -68,21 +67,21 @@ export function Section({
   id,
   children,
   className = "",
+  surface = "light",
   style,
-  surface = "base",
 }: {
   id?: string;
   children: ReactNode;
   className?: string;
+  surface?: "light" | "white" | "dark";
   style?: React.CSSProperties;
-  surface?: "base" | "body" | "lift";
 }) {
   const bg =
-    surface === "lift"
-      ? "var(--bg-lift)"
-      : surface === "body"
-        ? "var(--bg-body)"
-        : "transparent";
+    surface === "dark"
+      ? "var(--bg-dark)"
+      : surface === "white"
+        ? "var(--bg-white)"
+        : "var(--bg-light)";
   return (
     <section
       id={id}
@@ -101,7 +100,8 @@ export function SectionHead({
   titleHi,
   support,
   supportSegs,
-  center = true,
+  tone = "dark",
+  width = 841,
   className = "",
 }: {
   kicker?: string;
@@ -109,27 +109,43 @@ export function SectionHead({
   titleHi?: string;
   support?: string;
   supportSegs?: Seg[];
-  center?: boolean;
+  /** "dark" = seção escura (texto branco) · "light" = seção clara */
+  tone?: "dark" | "light";
+  width?: number;
   className?: string;
 }) {
+  const isDark = tone === "dark";
   return (
     <div
-      className={`${center ? "text-center mx-auto" : ""} ${className}`}
-      style={center ? { maxWidth: 820 } : undefined}
+      className={`flex flex-col items-center text-center gap-5 ${className}`}
+      style={{ maxWidth: width, marginInline: "auto" }}
     >
       {kicker && (
         <Reveal>
-          <p className="lp-kicker">{kicker}</p>
+          <p
+            className="lp-label"
+            style={{ color: isDark ? "var(--on-dark-3)" : "var(--ink-3)" }}
+          >
+            {kicker}
+          </p>
         </Reveal>
       )}
       {title && (
         <Reveal delay={0.06}>
-          <h2 className="lp-h2 mt-4">
+          <h2
+            className="lp-h2"
+            style={{ color: isDark ? "var(--on-dark)" : "var(--ink)" }}
+          >
             {title}
             {titleHi && (
               <>
                 {" "}
-                <span className="lp-accent">{titleHi}</span>
+                <span
+                  className={isDark ? "lp-accent" : "lp-accent-solid"}
+                  style={isDark ? undefined : { color: "var(--brand-2)" }}
+                >
+                  {titleHi}
+                </span>
               </>
             )}
           </h2>
@@ -138,8 +154,11 @@ export function SectionHead({
       {(support || supportSegs) && (
         <Reveal delay={0.12}>
           <p
-            className="lp-lead mt-5"
-            style={center ? { maxWidth: 700, marginInline: "auto" } : undefined}
+            className="lp-lead"
+            style={{
+              maxWidth: 700,
+              color: isDark ? "var(--on-dark-3)" : "var(--ink-3)",
+            }}
           >
             {supportSegs ? <Segs segs={supportSegs} /> : support}
           </p>

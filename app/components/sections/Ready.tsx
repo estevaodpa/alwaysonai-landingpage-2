@@ -1,31 +1,32 @@
 "use client";
 
 import { ready } from "../../lib/copy";
-import { Reveal, Section, SectionHead } from "../ui/primitives";
+import { Reveal } from "../ui/primitives";
 
 export function Ready() {
   return (
-    <Section id="pronto" surface="body">
-      <div className="relative lp-container flex flex-col items-center">
-        <SectionHead
-          kicker={ready.kicker}
-          title={ready.title}
-          titleHi={ready.titleHi}
-        />
+    <section id="pronto" className="relative pt-16 lg:pt-[72px] pb-16 lg:pb-[72px]">
+      <div className="lp-container flex flex-col items-center gap-8">
+        <Reveal>
+          <h2 className="lp-h2 text-center" style={{ maxWidth: 821 }}>
+            {ready.title}{" "}
+            <span className="lp-accent">{ready.titleHi}</span>
+          </h2>
+        </Reveal>
 
-        <Reveal delay={0.1}>
-          <ul className="mt-10 flex flex-col items-center gap-3">
+        <Reveal delay={0.08}>
+          <ul className="flex flex-col items-center gap-3">
             {ready.consequences.map((c) => (
               <li
                 key={c}
-                className="flex items-center gap-3 text-sm lg:text-base"
-                style={{ color: "var(--text-secondary)" }}
+                className="flex items-center gap-3 text-base"
+                style={{ color: "var(--on-dark-2)" }}
               >
                 <span
                   className="w-5 h-5 rounded-full flex items-center justify-center shrink-0"
                   style={{
                     background: "rgba(16,185,129,0.14)",
-                    border: "1px solid rgba(16,185,129,0.3)",
+                    border: "1px solid rgba(16,185,129,0.32)",
                   }}
                   aria-hidden="true"
                 >
@@ -45,16 +46,16 @@ export function Ready() {
           </ul>
         </Reveal>
 
-        <Reveal delay={0.16}>
-          <div className="mt-10 flex flex-wrap justify-center gap-2.5">
+        <Reveal delay={0.14}>
+          <div className="flex flex-wrap items-center justify-center gap-2.5">
             {ready.items.map((item) => (
               <span
                 key={item}
-                className="lp-pill !text-sm !px-4 !py-2"
+                className="inline-flex items-center px-4 py-2.5 rounded-xl text-sm font-medium"
                 style={{
-                  color: "var(--text-primary)",
-                  background: "rgba(0,168,255,0.07)",
-                  borderColor: "var(--border-accent)",
+                  color: "var(--on-dark)",
+                  background: "rgba(0,168,255,0.08)",
+                  border: "1px solid rgba(0,168,255,0.22)",
                 }}
               >
                 {item}
@@ -63,16 +64,14 @@ export function Ready() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.22}>
+        <Reveal delay={0.2}>
           <p
-            className="mt-12 text-center font-medium"
+            className="text-center font-medium"
             style={{
-              fontSize: "clamp(1.25rem, 2.4vw, 1.75rem)",
+              fontSize: "clamp(1.15rem, 2.2vw, 1.5rem)",
               lineHeight: 1.4,
-              letterSpacing: "-0.015em",
-              color: "var(--text-primary)",
+              color: "var(--on-dark)",
               maxWidth: 720,
-              marginInline: "auto",
             }}
           >
             A conversa acontece no WhatsApp.{" "}
@@ -80,6 +79,6 @@ export function Ready() {
           </p>
         </Reveal>
       </div>
-    </Section>
+    </section>
   );
 }

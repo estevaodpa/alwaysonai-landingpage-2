@@ -1,14 +1,16 @@
 # LP2 — Design System
 
 > Fonte de verdade das decisões visuais da landing page 2.
-> Herança: **formato** do botconversa.com.br · **identidade** do alwayson.ai.
+>
+> **Formato, ritmo, geometria e mecanismos:** fiel ao botconversa.com.br
+> **Conteúdo, identidade, logo, provas e produto:** alwayson.ai
 
 ---
 
 ## 1. A regra de modelagem
 
 **Modelar** = copiar estrutura, ordem de seções, ritmo de scroll, mecanismos de
-interação e tipos de componente.
+interação, geometria (padding, gaps, max-width, raios) e tipos de componente.
 
 **Não copiar** = logo, mockups, fotos, ícones, copy, código, paleta e tipografia
 do site de referência.
@@ -16,98 +18,107 @@ do site de referência.
 Tudo que aparece na LP2 é reconstruído a partir de:
 
 - Componentes copiados do site alwayson.ai atual
-  (`SmartphoneFrame`, `PhoneVideo`, `WhatsAppChat`, `chat/*`, `FloatingEvents`)
+  (`SmartphoneFrame`, `PhoneVideo`, `WhatsAppChat`, `chat/*`)
 - Assets reais do produto (`public/produto`, `public/proofs`)
-- Tokens do `DESIGN.md` do site atual
+- Tokens abaixo
 
 ---
 
-## 2. Mecanismos modelados no botconversa
+## 2. Geometria medida no modelo (1440×900)
 
-| Mecanismo | Como foi aplicado |
+| Elemento | Valor |
 |---|---|
-| Hero centralizado + mockup abaixo | Headline em 2 linhas centralizadas, CTA único, celular mockado em escala 0.78–0.95 logo abaixo |
-| Segmentado com indicador deslizante | Pill de 3 estados no hero, `layoutId` do framer-motion para o indicador |
-| Marquee infinito de logos | `lp-marquee-track` com `translateX(-50%)` em loop de 38s, pausa no hover |
-| Cards com mockup dentro | 4 cards de recurso + grade de nichos com print real |
-| Comparação "Hoje vs. Com" | 2 colunas com mesma hierarquia e tokens da marca |
-| Bloco Pricing → Diagnóstico | O slot exato do Pricing virou o diagnóstico inline (mesmo peso visual) |
-| Acordeão com `grid-template-rows` | FAQ com `0fr → 1fr` em 0.35s |
-| Sombra suave no card | `0 1px 20px rgba(0,0,0,.03)` base + lift no hover |
-| Botão gradiente sólido uppercase | `linear-gradient(135deg, #0050c8, #00a8ff)`, pill, glow |
-| Botão flutuante de WhatsApp | Verde `#25D366`, fixo, some sobre o diagnóstico |
-| Seções que clareiam no fim | base `#08090c` → body `#0b0e13` → lift `#12161d` (depoimentos/FAQ/footer) |
+| Padding de página | 32px (20px mobile) |
+| Container | `1280px` · `1520px` no hero |
+| Padding de seção | `72px 0px` |
+| Gap do hero (blocos) | `120px` |
+| Gap do mosaico de recursos | `12px` — grid `311px × 4`, 2 linhas de `310px` |
+| Gap da grade de 3 passos | `28px` — colunas `408px` |
+| Gap do grade de comparação | `12px` — 2 colunas |
+| Header de seção | `803px` (FAQ, diagnóstico) · `841px` (recursos) · `921px` (passos, nichos) · `774px` (recursos, título) |
+| Raio de card | `16px` · `20px` (depoimentos) · `24px` (cards claros) |
+| Raio de botão | `8px` |
+| Nav | `fixed`, `h-64`, vidro `rgba(255,255,255,.5)` + `blur(10px)`, raio `12px` |
+
+### Mecanismos do modelo replicados
+
+| Mecanismo | Como |
+|---|---|
+| Hero centralizado, mockup abaixo | headline em 2 linhas, CTA, `gap 120px`, pills + celular |
+| Grade em perspectiva | `.lp-perspective-grid` — elipses cônicas a partir de `50% 72%` |
+| Pills de operação flutuantes | 4 cards ao redor do celular (`HeroEvents.tsx`) |
+| Abas com indicador | `layoutId` do framer-motion sobre gradiente da marca |
+| Card com borda gradiente | `padding: 1px` + `border-radius: 16px` + gradiente |
+| Card com brilho radial | `radial-gradient(120% 70% at 50% 0%, …)` |
+| Mosaico de recursos | grid 4×2 com um card de borda azul |
+| Bloco claro aninhado | painel `#f4f5f7` dentro do card escuro |
+| Bloco "3 passos" | 3 colunas: card claro + número circulado + título + descrição |
+| Curva azul de transição | elipse `#1e9cff → #0050c8` entre o bloco escuro e o claro |
+| Bloco "Para empresas" | foto à direita + overlay + texto à esquerda |
+| Acordeão | `grid-template-rows: 0fr → 1fr`, 0.35s |
+| Botão flutuante de WhatsApp | fixo, some sobre o diagnóstico |
 
 ---
 
-## 3. Paleta
+## 3. Paleta (alwayson.ai)
 
-### Backgrounds
-- `--bg-base: #08090c` — hero, seções "transparentes"
-- `--bg-body: #0b0e13` — blocos de conteúdo
-- `--bg-lift: #12161d` — blocos finais (depoimentos, FAQ)
-- `--surface-card: #11151c` · `--surface-card-2: #161a22` — cards
+### Fundos
+- `--bg-light: #f7faff` — hero e seções claras
+- `--bg-white: #ffffff` — FAQ e rodapé
+- `--bg-dark-2: #18191c` — bloco escuro contínuo (recursos → diagnóstico)
+- `--bg-dark: #0f1012` — card "Para empresas"
 
 ### Texto
-- `--text-primary: #f5f6f7` · `--text-secondary: #9ba1ac` · `--text-tertiary: #5c6370`
+- Sobre claro: `#18191c` · `#2f3238` · `#6d6f74`
+- Sobre escuro: `#ffffff` · `#c9ced6` · `rgba(255,255,255,.45)`
 
-### Accent
-- `--accent-royal: #0050c8` → `--accent-cyan: #00a8ff` (135deg) — gradiente da marca
-- `--accent: #00a8ff` — destaque em texto e bordas
-- `--accent-muted: rgba(0,168,255,.12)` · `--accent-glow: rgba(0,168,255,.25)`
+### Marca
+- `--brand: #00a8ff` (cyan) · `--brand-2: #0050c8` (royal)
+- `--brand-grad: linear-gradient(135deg, #0050c8, #00a8ff)`
+- `--brand-grad-btn: linear-gradient(135deg, #1e9cff, #0050c8)` — botão: claro → profundo
 
-### Borders
-- `--border-subtle: rgba(255,255,255,.06)` · `--border-default: rgba(255,255,255,.1)` · `--border-accent: rgba(0,168,255,.2)`
+### Bordas
+- `--line-light: rgba(24,25,28,.12)` · `--line-dark: rgba(255,255,255,.08)`
 
-> **Regra**: o azul é tempero, nunca prato principal. Uma seção pode ter no
-> máximo um elemento com gradiente sólido.
+> **Regra**: o azul é tempero. Uma seção tem no máximo um elemento com gradiente
+> sólido (o card de borda azul do mosaico).
 
 ---
 
 ## 4. Tipografia
 
-**Geist Sans** (via `next/font/google`). Escala:
+**Geist Sans** (via `next/font/google`).
 
 | Papel | Tamanho | Peso | Tracking | Leading |
 |---|---|---|---|---|
-| H1 | `clamp(2.35rem, 6vw, 4.25rem)` | 600 | `-0.035em` | 1.06 |
-| H2 | `clamp(2rem, 4.2vw, 3.25rem)` | 600 | `-0.025em` | 1.1 |
-| H3 | `clamp(1.15rem, 1.8vw, 1.4rem)` | 600 | `-0.015em` | 1.3 |
-| Lead | `clamp(1rem, 1.4vw, 1.15rem)` | 400 | normal | 1.65 |
-| Body | `0.9375rem` | 400 | normal | 1.7 |
-| Kicker | `0.8125rem` | 500 | `0.16em` uppercase | 1.4 |
+| H1 | `clamp(2.25rem, 5.4vw, 3.5rem)` | 700 | `-0.03em` | 1 |
+| H2 | `clamp(1.75rem, 3.6vw, 2.5rem)` | 600 | `-0.02em` | 1 |
+| H3 | `1.125rem` | 600 | `-0.015em` | 1.2 |
+| Lead | `1.125rem` | 400 | normal | 1.4 |
+| Body | `0.9375rem` | 400 | normal | 1.6 |
+| Label | `0.6875rem` | 800 | `0.08em` uppercase | 1.4 |
 
-Hierarquia da headline: a **última frase** ou a **palavra-chave** leva
+Hierarquia da headline: **a última frase** ou **a palavra-chave** leva
 `lp-accent` (gradiente). Nunca a frase inteira.
 
 ---
 
-## 5. Layout
+## 5. Movimento
 
-- Container: `1200px` (1280px a partir de `xl`), padding lateral `24px`
-- Padding de seção: `72px` mobile · `120px` desktop
-- Raio: `10px` (inputs) · `16px` (cards pequenos) · `20px` (cards) · `9999px` (pills)
-- Sombra: `0 24px 60px rgba(0,0,0,.45)` no hover de card
-
----
-
-## 6. Movimento
-
-- Easing padrão: `cubic-bezier(0.16, 1, 0.3, 1)` (EASE)
-- Duração: 0.32s (troca de pergunta) · 0.35s (acordeão) · 0.5s (fade) · 0.7s (reveal)
-- `whileInView` com `once: true` e `margin: "-12% 0px"` — reveal na entrada
+- Easing padrão: `cubic-bezier(0.16, 1, 0.3, 1)`
+- `whileInView` com `once: true` e `margin: "-10% 0px"`
 - `prefers-reduced-motion` respeitado globalmente via CSS
 
-> **Avoid**: `AnimatePresence mode="wait"` para troca de tela — trava a saída e
-> impede o próximo estado de montar. Use remount por `key`.
+> **Avoid**: `AnimatePresence mode="wait"` — trava a saída nesta versão do
+> framer-motion e impede o próximo estado de montar. Use remount por `key`.
 
 ---
 
-## 7. Princípios
+## 6. Princípios
 
-1. **CLARITY > AESTHETIC > EFFECTS** — movimento explica, não decora
-2. **Dark-first** — o logo tem wordmark branco; não existe versão clara
-3. **Prova real** — todo print é do produto real, nunca mock genérico
+1. **Formato primeiro** — a geometria vem do modelo, não do gosto
+2. **Identidade sempre** — cor, logo e copy são alwayson
+3. **Prova real** — todo print é do produto real
 4. **Copy num arquivo só** — `app/lib/copy.ts`; nada de texto no JSX
 5. **Contrato não se mexe** — `lib/diagnostic.ts` e `lib/meta-pixel.ts` são
    cópias literais do site atual

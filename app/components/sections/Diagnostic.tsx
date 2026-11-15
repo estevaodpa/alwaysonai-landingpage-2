@@ -18,7 +18,7 @@ import {
   trackDiagnosticStart,
   trackWhatsAppClick,
 } from "../../lib/analytics";
-import { Reveal, Section } from "../ui/primitives";
+import { Reveal } from "../ui/primitives";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 const CYAN = "#4dc3ff";
@@ -208,13 +208,13 @@ export function Diagnostic() {
     : Boolean(selectedValue);
 
   const optionStyle = (selected: boolean) => ({
-    borderColor: selected ? "rgba(0,168,255,0.55)" : "rgba(255,255,255,0.09)",
+    borderColor: selected ? "rgba(0,168,255,0.55)" : "rgba(255,255,255,0.1)",
     background: selected ? "rgba(0,168,255,0.10)" : "rgba(255,255,255,0.02)",
     color: selected ? CYAN : WHITE,
   });
 
   return (
-    <Section id="diagnostico" surface="body">
+    <section id="diagnostico" className="relative pt-16 lg:pt-[72px] pb-16 lg:pb-[72px]">
       <div
         className="absolute inset-x-0 top-0 h-px"
         style={{
@@ -227,15 +227,20 @@ export function Diagnostic() {
 
       <div className="relative lp-container">
         {/* Abertura */}
-        <div className="text-center max-w-[820px] mx-auto">
+        <div className="text-center" style={{ maxWidth: 803, marginInline: "auto" }}>
           <Reveal>
-            <p className="lp-kicker">{diagnostic.kicker}</p>
+            <p className="lp-label" style={{ color: "var(--on-dark-3)" }}>
+              {diagnostic.kicker}
+            </p>
           </Reveal>
           <Reveal delay={0.06}>
             <h2 className="lp-h2 mt-4">{diagnostic.title}</h2>
           </Reveal>
           <Reveal delay={0.12}>
-            <p className="lp-lead mt-5" style={{ maxWidth: 700, marginInline: "auto" }}>
+            <p
+              className="lp-lead lp-lead-dark mt-5"
+              style={{ maxWidth: 505, marginInline: "auto" }}
+            >
               {diagnostic.support}
             </p>
           </Reveal>
@@ -247,9 +252,9 @@ export function Diagnostic() {
             className="relative mt-12 lg:mt-16 mx-auto max-w-[760px] overflow-hidden"
             style={{
               borderRadius: 24,
-              border: "1px solid var(--border-default)",
+              border: "1px solid rgba(255,255,255,0.1)",
               background:
-                "linear-gradient(180deg, rgba(18,22,29,0.96) 0%, rgba(11,14,19,0.96) 100%)",
+                "linear-gradient(180deg, rgba(22,25,31,0.96) 0%, rgba(15,16,18,0.96) 100%)",
               boxShadow: "0 40px 100px rgba(0,0,0,0.6)",
             }}
           >
@@ -260,13 +265,13 @@ export function Diagnostic() {
                   <button
                     onClick={goBack}
                     className="text-xs font-medium px-2 py-1 -ml-2 rounded-lg transition-colors"
-                    style={{ color: "var(--text-tertiary)" }}
+                    style={{ color: "var(--on-dark-3)" }}
                   >
                     ← Voltar
                   </button>
                   <span
                     className="text-xs font-medium tabular-nums"
-                    style={{ color: "var(--text-tertiary)" }}
+                    style={{ color: "var(--on-dark-3)" }}
                   >
                     {phase === "final"
                       ? "Concluído"
@@ -301,7 +306,7 @@ export function Diagnostic() {
                     </p>
                     <p
                       className="mt-4 text-xs font-medium"
-                      style={{ color: "var(--text-tertiary)" }}
+                      style={{ color: "var(--on-dark-3)" }}
                     >
                       Leva cerca de 2 minutos.
                     </p>
@@ -337,7 +342,7 @@ export function Diagnostic() {
                       {q.prompt}
                     </h3>
                     {q.subtext && (
-                      <p className="mt-2 text-sm" style={{ color: "var(--text-tertiary)" }}>
+                      <p className="mt-2 text-sm" style={{ color: "var(--on-dark-3)" }}>
                         {q.subtext}
                       </p>
                     )}
@@ -415,7 +420,7 @@ export function Diagnostic() {
                       <div>
                         <label
                           className="block text-xs font-medium tracking-wide mb-2"
-                          style={{ color: "var(--text-secondary)" }}
+                          style={{ color: "var(--on-dark-2)" }}
                         >
                           Seu nome
                         </label>
@@ -439,7 +444,7 @@ export function Diagnostic() {
                       <div>
                         <label
                           className="block text-xs font-medium tracking-wide mb-2"
-                          style={{ color: "var(--text-secondary)" }}
+                          style={{ color: "var(--on-dark-2)" }}
                         >
                           Nome da clínica
                         </label>
@@ -463,7 +468,7 @@ export function Diagnostic() {
                       <div>
                         <label
                           className="block text-xs font-medium tracking-wide mb-2"
-                          style={{ color: "var(--text-secondary)" }}
+                          style={{ color: "var(--on-dark-2)" }}
                         >
                           Seu melhor WhatsApp
                         </label>
@@ -522,7 +527,7 @@ export function Diagnostic() {
                         trackCtaClick("diagnostic_whatsapp_fallback");
                       }}
                       className="mt-3 block text-center text-sm transition-colors"
-                      style={{ color: "var(--text-tertiary)" }}
+                      style={{ color: "var(--on-dark-3)" }}
                     >
                       Prefere falar direto? Continuar pelo WhatsApp
                     </a>
@@ -590,26 +595,73 @@ export function Diagnostic() {
           </div>
         </Reveal>
 
-        {/* Quebra de objeção */}
+        {/* Bloco de garantia — mesmo peso do bloco homólogo do modelo */}
         <Reveal delay={0.22}>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-5 gap-y-3">
-            {diagnostic.objections.map((o) => (
-              <span
-                key={o}
-                className="flex items-center gap-2.5 text-sm"
-                style={{ color: "var(--text-tertiary)" }}
-              >
-                <span
-                  className="w-1 h-1 rounded-full shrink-0"
-                  style={{ background: "rgba(0,168,255,0.4)" }}
-                  aria-hidden="true"
+          <div
+            className="mt-8 rounded-2xl p-6 lg:p-8 flex flex-col sm:flex-row gap-4 lg:gap-6 items-start"
+            style={{
+              background: "rgba(255,255,255,0.02)",
+              border: "1px solid rgba(255,255,255,0.07)",
+            }}
+          >
+            <span
+              className="shrink-0 flex items-center justify-center w-14 h-14 rounded-2xl"
+              style={{
+                background:
+                  "linear-gradient(135deg, rgba(0,80,200,0.3) 0%, rgba(0,168,255,0.3) 100%)",
+                border: "1px solid rgba(0,168,255,0.35)",
+              }}
+              aria-hidden="true"
+            >
+              <svg width="22" height="22" viewBox="0 0 16 16" fill="none">
+                <path
+                  d="M8 1.6 3.2 3.8v3.9c0 3 2 5.5 4.8 6.7 2.8-1.2 4.8-3.7 4.8-6.7V3.8L8 1.6Z"
+                  stroke="#4dc3ff"
+                  strokeWidth="1.3"
+                  strokeLinejoin="round"
                 />
-                {o}
+                <path
+                  d="M5.8 8.1 7.3 9.6l3-3.2"
+                  stroke="#4dc3ff"
+                  strokeWidth="1.4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
+            <div>
+              <span
+                className="font-semibold"
+                style={{ fontSize: "1.25rem", color: "var(--on-dark)" }}
+              >
+                Teste sem risco. Sem compromisso.
               </span>
-            ))}
+              <p
+                className="mt-2 text-base leading-relaxed"
+                style={{ color: "var(--on-dark-3)" }}
+              >
+                {diagnostic.microcopy}
+              </p>
+              <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3">
+                {diagnostic.objections.map((o) => (
+                  <span
+                    key={o}
+                    className="flex items-center gap-2.5 text-sm"
+                    style={{ color: "var(--on-dark-2)" }}
+                  >
+                    <span
+                      className="w-1 h-1 rounded-full shrink-0"
+                      style={{ background: "rgba(0,168,255,0.5)" }}
+                      aria-hidden="true"
+                    />
+                    {o}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </Reveal>
       </div>
-    </Section>
+    </section>
   );
 }

@@ -2,13 +2,13 @@
 
 import Image from "next/image";
 import { dashboard } from "../../lib/copy";
-import { Reveal, Section, SectionHead } from "../ui/primitives";
+import { Reveal } from "../ui/primitives";
 
 const STAGE_COLORS = [
-  { bg: "rgba(0,168,255,0.10)", border: "rgba(0,168,255,0.28)", dot: "#00a8ff" },
-  { bg: "rgba(120,120,255,0.10)", border: "rgba(120,120,255,0.26)", dot: "#7878ff" },
-  { bg: "rgba(16,185,129,0.10)", border: "rgba(16,185,129,0.26)", dot: "#10b981" },
-  { bg: "rgba(0,168,255,0.16)", border: "rgba(0,168,255,0.38)", dot: "#4dc3ff" },
+  { border: "rgba(0,168,255,0.28)", dot: "#00a8ff", bg: "rgba(0,168,255,0.08)" },
+  { border: "rgba(120,120,255,0.26)", dot: "#7878ff", bg: "rgba(120,120,255,0.08)" },
+  { border: "rgba(16,185,129,0.26)", dot: "#10b981", bg: "rgba(16,185,129,0.08)" },
+  { border: "rgba(77,195,255,0.38)", dot: "#4dc3ff", bg: "rgba(0,168,255,0.14)" },
 ];
 
 export function Dashboard() {
@@ -20,32 +20,44 @@ export function Dashboard() {
   ];
 
   return (
-    <Section id="painel" surface="base">
-      <div className="lp-glow bottom-0 right-0 w-[700px] h-[500px]" aria-hidden="true" />
-
-      <div className="relative lp-container">
-        <SectionHead
-          kicker={dashboard.kicker}
-          title={dashboard.title}
-          titleHi={dashboard.titleHi}
-          support={dashboard.support}
-        />
+    <section id="painel" className="relative pt-16 lg:pt-[72px] pb-16 lg:pb-[72px]">
+      <div className="lp-container flex flex-col gap-7">
+        {/* Cabeçalho */}
+        <div className="flex flex-col items-center text-center gap-5">
+          <Reveal>
+            <p className="lp-label" style={{ color: "var(--on-dark-3)" }}>
+              {dashboard.kicker}
+            </p>
+          </Reveal>
+          <Reveal delay={0.06}>
+            <h2 className="lp-h2" style={{ maxWidth: 921 }}>
+              {dashboard.title}{" "}
+              <span className="lp-accent">{dashboard.titleHi}</span>
+            </h2>
+          </Reveal>
+          <Reveal delay={0.12}>
+            <p className="lp-lead lp-lead-dark" style={{ maxWidth: 700 }}>
+              {dashboard.support}
+            </p>
+          </Reveal>
+        </div>
 
         {/* Kanban */}
-        <div className="mt-14 lg:mt-16 grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
-          {dashboard.columns.map((col, i) => (
-            <Reveal key={col.title} delay={i * 0.07}>
+        <Reveal delay={0.1}>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
+            {dashboard.columns.map((col, i) => (
               <div
-                className="h-full rounded-2xl p-3.5 lg:p-4"
+                key={col.title}
+                className="rounded-2xl p-4"
                 style={{
-                  background: "var(--surface-card)",
+                  background: STAGE_COLORS[i].bg,
                   border: `1px solid ${STAGE_COLORS[i].border}`,
                 }}
               >
                 <div className="flex items-center justify-between gap-2">
                   <span
-                    className="text-[0.6875rem] font-semibold uppercase tracking-[0.12em]"
-                    style={{ color: "var(--text-secondary)" }}
+                    className="text-[0.6875rem] font-bold uppercase tracking-[0.1em]"
+                    style={{ color: "var(--on-dark-2)" }}
                   >
                     {col.title}
                   </span>
@@ -58,7 +70,7 @@ export function Dashboard() {
                 </div>
                 <p
                   className="mt-1.5 text-xs leading-snug"
-                  style={{ color: "var(--text-tertiary)" }}
+                  style={{ color: "var(--on-dark-3)" }}
                 >
                   {col.note}
                 </p>
@@ -69,26 +81,23 @@ export function Dashboard() {
                       key={c.name}
                       className="rounded-xl px-3 py-2.5"
                       style={{
-                        background: "rgba(255,255,255,0.035)",
-                        border: "1px solid var(--border-subtle)",
+                        background: "rgba(255,255,255,0.05)",
+                        border: "1px solid rgba(255,255,255,0.07)",
                       }}
                     >
                       <div
                         className="text-sm font-medium"
-                        style={{ color: "var(--text-primary)" }}
+                        style={{ color: "var(--on-dark)" }}
                       >
                         {c.name}
                       </div>
                       <div className="mt-0.5 flex items-center justify-between gap-2">
-                        <span
-                          className="text-xs"
-                          style={{ color: "var(--text-secondary)" }}
-                        >
+                        <span className="text-xs" style={{ color: "var(--on-dark-2)" }}>
                           {c.note}
                         </span>
                         <span
                           className="text-[0.6875rem] tabular-nums"
-                          style={{ color: "var(--text-tertiary)" }}
+                          style={{ color: "var(--on-dark-3)" }}
                         >
                           {c.date}
                         </span>
@@ -97,19 +106,15 @@ export function Dashboard() {
                   ))}
                 </div>
               </div>
-            </Reveal>
-          ))}
-        </div>
+            ))}
+          </div>
+        </Reveal>
 
-        {/* Print real da tabela de contatos */}
-        <Reveal delay={0.12}>
+        {/* Print real */}
+        <Reveal delay={0.14}>
           <div
-            className="mt-5 lg:mt-6 overflow-hidden"
-            style={{
-              borderRadius: 20,
-              border: "1px solid var(--border-default)",
-              background: "var(--surface-card)",
-            }}
+            className="overflow-hidden rounded-2xl"
+            style={{ border: "1px solid rgba(255,255,255,0.08)" }}
           >
             <Image
               src={dashboard.image}
@@ -123,6 +128,6 @@ export function Dashboard() {
           </div>
         </Reveal>
       </div>
-    </Section>
+    </section>
   );
 }

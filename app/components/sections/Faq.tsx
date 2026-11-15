@@ -2,30 +2,47 @@
 
 import { useState } from "react";
 import { faq } from "../../lib/copy";
-import { Reveal, Section, SectionHead } from "../ui/primitives";
+import { Reveal } from "../ui/primitives";
 
 export function Faq() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <Section id="faq" surface="lift">
+    <section id="faq" className="relative pt-4 lg:pt-8 pb-16 lg:pb-24 bg-[var(--bg-white)]">
       <div className="lp-container">
-        <SectionHead
-          kicker={faq.kicker}
-          title={faq.title}
-          support={faq.support}
-        />
+        {/* Cabeçalho */}
+        <div
+          className="flex flex-col items-center text-center gap-5 mb-12 lg:mb-16"
+          style={{ maxWidth: 803, marginInline: "auto" }}
+        >
+          <Reveal>
+            <p className="lp-label" style={{ color: "var(--ink-3)" }}>
+              {faq.kicker}
+            </p>
+          </Reveal>
+          <Reveal delay={0.06}>
+            <h2 className="lp-h2" style={{ color: "var(--ink)" }}>
+              {faq.title}
+            </h2>
+          </Reveal>
+          <Reveal delay={0.12}>
+            <p className="lp-lead" style={{ maxWidth: 620 }}>
+              {faq.support}
+            </p>
+          </Reveal>
+        </div>
 
-        <div className="mt-12 max-w-[820px] mx-auto flex flex-col gap-2.5">
+        {/* Acordeão */}
+        <div className="flex flex-col gap-2.5" style={{ maxWidth: 803, marginInline: "auto" }}>
           {faq.items.map((item, i) => {
             const isOpen = open === i;
             return (
-              <Reveal key={item.q} delay={i * 0.05}>
+              <Reveal key={item.q} delay={i * 0.04}>
                 <div
                   className="overflow-hidden rounded-2xl transition-colors duration-300"
                   style={{
-                    border: `1px solid ${isOpen ? "var(--border-accent)" : "var(--border-default)"}`,
-                    background: "var(--surface-card)",
+                    border: `1px solid ${isOpen ? "rgba(0,80,200,0.28)" : "rgba(24,25,28,0.09)"}`,
+                    background: "#fff",
                   }}
                 >
                   <button
@@ -34,19 +51,20 @@ export function Faq() {
                     className="w-full flex items-center justify-between gap-6 px-6 py-5 text-left"
                   >
                     <span
-                      className="font-medium"
+                      className="font-semibold"
                       style={{
-                        fontSize: "clamp(0.95rem, 1.3vw, 1.0625rem)",
-                        color: "var(--text-primary)",
+                        fontSize: "1rem",
+                        lineHeight: 1.45,
+                        color: "var(--ink)",
                       }}
                     >
                       {item.q}
                     </span>
                     <span
-                      className="shrink-0 flex items-center justify-center w-7 h-7 rounded-full transition-transform duration-300"
+                      className="shrink-0 flex items-center justify-center w-7 h-7 rounded-full transition-all duration-300"
                       style={{
-                        background: isOpen ? "var(--gradient-brand)" : "rgba(255,255,255,0.06)",
-                        border: "1px solid var(--border-default)",
+                        background: isOpen ? "var(--brand-grad)" : "rgba(24,25,28,0.05)",
+                        border: "1px solid rgba(24,25,28,0.08)",
                         transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
                       }}
                       aria-hidden="true"
@@ -54,7 +72,7 @@ export function Faq() {
                       <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                         <path
                           d="M6 1.5v9M1.5 6h9"
-                          stroke={isOpen ? "#fff" : "#9ba1ac"}
+                          stroke={isOpen ? "#fff" : "#6d6f74"}
                           strokeWidth="1.6"
                           strokeLinecap="round"
                         />
@@ -68,8 +86,8 @@ export function Faq() {
                   >
                     <div className="lp-accordion-inner">
                       <p
-                        className="px-6 pb-6 text-sm leading-relaxed"
-                        style={{ color: "var(--text-secondary)" }}
+                        className="px-6 pb-6 text-[0.9375rem] leading-relaxed"
+                        style={{ color: "var(--ink-3)" }}
                       >
                         {item.a}
                       </p>
@@ -81,6 +99,6 @@ export function Faq() {
           })}
         </div>
       </div>
-    </Section>
+    </section>
   );
 }

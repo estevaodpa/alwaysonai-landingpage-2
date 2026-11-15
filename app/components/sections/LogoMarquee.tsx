@@ -7,42 +7,41 @@ export function LogoMarquee() {
   const items = [...marquee.names, ...marquee.names];
 
   return (
-    <section
-      className="relative py-14 lg:py-16"
-      style={{ background: "var(--bg-body)" }}
-    >
-      <div className="lp-container">
+    <section className="relative pt-4 pb-10 lg:pb-16">
+      <div className="lp-container flex flex-col items-center gap-6" style={{ maxWidth: 850 }}>
         <Reveal>
           <p
-            className="text-center text-sm font-medium"
-            style={{ color: "var(--text-tertiary)" }}
+            className="text-center font-semibold"
+            style={{ fontSize: "1rem", color: "#18191c" }}
           >
             {marquee.headline}
           </p>
         </Reveal>
-      </div>
 
-      <div className="lp-marquee mt-8">
-        <div className="lp-marquee-track">
-          {items.map((name, i) => (
-            <div
-              key={`${name}-${i}`}
-              className="flex items-center gap-10 lg:gap-16 px-10 shrink-0"
-            >
-              <span
-                className="text-base lg:text-lg font-semibold whitespace-nowrap"
-                style={{ color: "rgba(255,255,255,0.34)" }}
-              >
-                {name}
-              </span>
-              <span
-                className="w-1.5 h-1.5 rounded-full shrink-0"
-                style={{ background: "rgba(0,168,255,0.35)" }}
-                aria-hidden="true"
-              />
+        <Reveal delay={0.08}>
+          <div className="lp-marquee w-full">
+            <div className="lp-marquee-track">
+              {items.map((name, i) => (
+                <div
+                  key={`${name}-${i}`}
+                  className="flex items-center gap-10 lg:gap-16 px-8 lg:px-12 shrink-0"
+                >
+                  <span
+                    className="text-base lg:text-xl font-bold whitespace-nowrap"
+                    style={{ color: "#2f3238", opacity: 0.55 }}
+                  >
+                    {name}
+                  </span>
+                  <span
+                    className="w-1.5 h-1.5 rounded-full shrink-0"
+                    style={{ background: "#00a8ff" }}
+                    aria-hidden="true"
+                  />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
