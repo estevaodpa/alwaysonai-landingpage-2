@@ -12,7 +12,7 @@ export function Faq() {
       <div className="lp-container">
         {/* Cabeçalho */}
         <div
-          className="flex flex-col items-center text-center gap-5 mb-12 lg:mb-16"
+          className="flex flex-col items-center text-center gap-5 mb-8 lg:mb-10"
           style={{ maxWidth: 803, marginInline: "auto" }}
         >
           <Reveal>

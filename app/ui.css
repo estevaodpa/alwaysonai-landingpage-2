@@ -28,11 +28,11 @@
 
   .lp-section {
     position: relative;
-    padding-block: 72px;
+    padding-block: 40px;
   }
   @media (min-width: 1024px) {
     .lp-section {
-      padding-block: 96px;
+      padding-block: 48px;
     }
   }
 

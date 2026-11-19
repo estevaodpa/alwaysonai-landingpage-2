@@ -53,7 +53,7 @@ function Column({
 
 export function Comparison() {
   return (
-    <section id="comparacao" className="relative pt-16 lg:pt-[72px] pb-16 lg:pb-[72px]">
+    <section id="comparacao" className="relative pt-10 lg:pt-[40px] pb-10 lg:pb-[40px]">
       <div className="lp-container flex flex-col gap-10">
         <Reveal>
           <h2 className="lp-h2 text-center" style={{ maxWidth: 760, marginInline: "auto" }}>

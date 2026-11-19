@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { marquee } from "../../lib/copy";
 import { Reveal } from "../ui/primitives";
 
@@ -22,7 +23,11 @@ export function LogoMarquee() {
 
         <Reveal delay={0.08}>
           <div className="lp-marquee w-full">
-            <div className="lp-marquee-track">
+            <motion.div
+              className="flex w-max"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{ duration: 26, repeat: Infinity, ease: "linear" }}
+            >
               {items.map((logo, i) => (
                 <div
                   key={`${logo.src}-${i}`}
@@ -40,7 +45,7 @@ export function LogoMarquee() {
                   />
                 </div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </Reveal>
       </div>

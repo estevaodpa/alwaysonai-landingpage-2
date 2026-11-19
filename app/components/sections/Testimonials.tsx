@@ -33,7 +33,7 @@ export function Testimonials() {
 
       <div className="relative lp-container" style={{ zIndex: 1 }}>
         {/* Cabeçalho */}
-        <div className="flex flex-col items-center text-center gap-5 mb-12 lg:mb-16">
+        <div className="flex flex-col items-center text-center gap-5 mb-8 lg:mb-10">
           <Reveal>
             <p className="lp-label" style={{ color: "var(--ink-3)" }}>
               {testimonials.kicker}

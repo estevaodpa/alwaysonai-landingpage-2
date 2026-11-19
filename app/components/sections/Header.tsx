@@ -18,13 +18,13 @@ export function Header() {
     };
   }, [menuOpen]);
 
-  const handleCta = (e: React.MouseEvent, location: string) => {
-    e.preventDefault();
+  const WHATSAPP_URL =
+    "https://wa.me/5564999877992?text=Oi!%20Vim%20pelo%20site%20da%20alwayson.ai%20e%20quero%20falar%20sobre%20a%20minha%20cl%C3%ADnica.";
+
+  const handleCta = (location: string) => {
     trackCtaClick(location);
-    document
-      .querySelector("#diagnostico")
-      ?.scrollIntoView({ behavior: "smooth", block: "start" });
     setMenuOpen(false);
+    window.open(WHATSAPP_URL, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -62,8 +62,8 @@ export function Header() {
         {/* Desktop actions */}
         <div className="hidden lg:flex items-center gap-3">
           <a
-            href="#diagnostico"
-            onClick={(e) => handleCta(e, "header")}
+            href={WHATSAPP_URL}
+            onClick={() => handleCta("header")}
             className="lp-btn !py-2.5 !px-5 !text-[0.8125rem] !rounded-[10px]"
           >
             {nav.cta}
@@ -119,8 +119,8 @@ export function Header() {
                 </a>
               ))}
               <a
-                href="#diagnostico"
-                onClick={(e) => handleCta(e, "header_mobile")}
+                href={WHATSAPP_URL}
+                onClick={() => handleCta("header_mobile")}
                 className="lp-btn mt-4 w-full"
               >
                 {nav.cta}

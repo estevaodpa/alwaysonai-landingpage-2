@@ -20,7 +20,7 @@ export const nav = {
     { label: "Perguntas", href: "#faq" },
   ],
   login: "Entrar na plataforma",
-  cta: "Fazer diagnóstico",
+  cta: "Falar com um especialista",
 };
 
 // ── Hero ────────────────────────────────────────────────────────────────────
@@ -445,17 +445,20 @@ export const footer = {
     {
       title: "Produto",
       links: [
-        { label: "Como funciona", href: "#como-funciona" },
         { label: "Recursos", href: "#recursos" },
+        { label: "Cases reais", href: "#depoimentos" },
         { label: "Painel da clínica", href: "#painel" },
-        { label: "Diagnóstico", href: "#diagnostico" },
+        { label: "Agenda integrada", href: "#agenda" },
       ],
     },
     {
       title: "Suporte",
       links: [
         { label: "Perguntas frequentes", href: "#faq" },
-        { label: "Falar com um especialista", href: "#diagnostico" },
+        {
+          label: "Falar com um especialista",
+          href: "https://wa.me/5564999877992",
+        },
       ],
     },
     {

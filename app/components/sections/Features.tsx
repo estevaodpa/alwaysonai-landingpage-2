@@ -62,10 +62,10 @@ function LightPanel({
 
 export function Features() {
   return (
-    <section id="recursos" className="relative pt-16 lg:pt-[72px] pb-16 lg:pb-[72px]">
+    <section id="recursos" className="relative pt-10 lg:pt-[40px] pb-10 lg:pb-[40px]">
       <div className="lp-container">
         {/* Cabeçalho */}
-        <div className="flex flex-col items-center text-center gap-5 mb-10 lg:mb-14">
+        <div className="flex flex-col items-center text-center gap-5 mb-8 lg:mb-10">
           <Reveal>
             <p className="lp-label" style={{ color: "var(--on-dark-3)" }}>
               {features.kicker}

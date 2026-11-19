@@ -6,11 +6,9 @@ import { CasesReais } from "./components/sections/CasesReais";
 import { Features } from "./components/sections/Features";
 import { Niches } from "./components/sections/Niches";
 import { Dashboard } from "./components/sections/Dashboard";
-import { Integrations } from "./components/sections/Integrations";
 import { Comparison } from "./components/sections/Comparison";
 import { Ready } from "./components/sections/Ready";
-import { VideoDemo } from "./components/sections/VideoDemo";
-import { Diagnostic } from "./components/sections/Diagnostic";
+import { AgendaIntegrada } from "./components/sections/AgendaIntegrada";
 import { Closing } from "./components/sections/Closing";
 import { Testimonials } from "./components/sections/Testimonials";
 import { Faq } from "./components/sections/Faq";
@@ -27,16 +25,14 @@ export default function Home() {
         <LogoMarquee />
         <CasesReais />
 
-        {/* Bloco escuro contínuo — mesmo ritmo de contraste do modelo */}
+        {/* Bloco escuro contínuo */}
         <div style={{ background: "var(--bg-dark-2)" }}>
           <Features />
           <Niches />
           <Dashboard />
-          <Integrations />
           <Comparison />
           <Ready />
-          <VideoDemo />
-          <Diagnostic />
+          <AgendaIntegrada />
           <Closing />
         </div>
 

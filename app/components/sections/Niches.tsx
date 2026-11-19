@@ -13,10 +13,10 @@ export function Niches() {
   const item = niches.items[active];
 
   return (
-    <section id="nichos" className="relative pt-16 lg:pt-[72px] pb-16 lg:pb-[72px]">
+    <section id="nichos" className="relative pt-10 lg:pt-[40px] pb-10 lg:pb-[40px]">
       <div className="lp-container">
         {/* Cabeçalho */}
-        <div className="flex flex-col items-center text-center gap-5 mb-12 lg:mb-16">
+        <div className="flex flex-col items-center text-center gap-5 mb-8 lg:mb-10">
           <Reveal>
             <p className="lp-label" style={{ color: "var(--on-dark-3)" }}>
               {niches.kicker}
