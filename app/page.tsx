@@ -2,6 +2,7 @@ import { MetaPixelProvider } from "./components/MetaPixelProvider";
 import { Header } from "./components/sections/Header";
 import { Hero } from "./components/sections/Hero";
 import { LogoMarquee } from "./components/sections/LogoMarquee";
+import { CasesReais } from "./components/sections/CasesReais";
 import { Features } from "./components/sections/Features";
 import { Niches } from "./components/sections/Niches";
 import { Dashboard } from "./components/sections/Dashboard";
@@ -24,6 +25,7 @@ export default function Home() {
         {/* Claro */}
         <Hero />
         <LogoMarquee />
+        <CasesReais />
 
         {/* Bloco escuro contínuo — mesmo ritmo de contraste do modelo */}
         <div style={{ background: "var(--bg-dark-2)" }}>

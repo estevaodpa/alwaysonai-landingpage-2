@@ -33,7 +33,7 @@ export function LogoMarquee() {
                     alt={logo.alt}
                     width={logo.w}
                     height={110}
-                    className="h-[52px] w-auto object-contain lg:h-[64px]"
+                    className="h-[80px] w-auto object-contain sm:h-[96px] lg:h-[104px]"
                     style={{ filter: "saturate(0.72)" }}
                     loading="eager"
                     decoding="async"

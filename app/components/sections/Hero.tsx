@@ -1,28 +1,29 @@
 "use client";
 
+import { useCallback, useState } from "react";
 import { motion } from "framer-motion";
 import { SmartphoneFrame } from "../product/SmartphoneFrame";
-import { RealChat } from "../product/RealChat";
+import { PhoneVideo } from "../product/PhoneVideo";
 import { HeroEvents } from "./HeroEvents";
-import { useConversation } from "../../hooks/use-conversation";
 import { hero } from "../../lib/copy";
-import { trackCtaClick } from "../../lib/analytics";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-// Rótulos estáticos — sem clique, sem troca de conteúdo.
+// Rótulos estáticos acima do celular.
 const TABS = ["Atende 24/7", "Qualifica", "Agenda"];
 
-export function Hero() {
-  const { lines, isTyping, activeHeroAction } = useConversation();
+// Momentos identificados no vídeo (58s):
+// 16s primeiro atendimento · 25s explicação/avaliação · 33s valor e parcelamento · 46s horário
+const STAGE_TIMES = [16, 25, 33, 46];
 
-  const handleCta = (e: React.MouseEvent) => {
-    e.preventDefault();
-    trackCtaClick("hero");
-    document
-      .querySelector("#diagnostico")
-      ?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
+export function Hero() {
+  const [videoTime, setVideoTime] = useState(0);
+  const onTime = useCallback((t: number) => setVideoTime(t), []);
+
+  let activeAction = -1;
+  STAGE_TIMES.forEach((t, i) => {
+    if (videoTime >= t) activeAction = i;
+  });
 
   return (
     <section
@@ -40,32 +41,77 @@ export function Hero() {
         className="relative lp-container flex flex-col items-center"
         style={{ gap: 72, maxWidth: 1520 }}
       >
-        {/* Headline + sub + CTA */}
+        {/* Copy */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: EASE }}
-          className="flex flex-col items-center text-center gap-6 w-full"
-          style={{ maxWidth: 1000 }}
+          className="flex flex-col items-center text-center w-full"
+          style={{ maxWidth: 1040 }}
         >
-          <h1 className="lp-h1" style={{ fontSize: "clamp(2.25rem, 5vw, 3.35rem)" }}>
-            {hero.titleLine1}
-            <br />
-            <span className="lp-accent-solid">{hero.titleLine2}</span>
-            <br />
-            <span className="lp-accent-solid">{hero.titleLine3}</span>
+          {/* Abertura */}
+          <h1
+            className="font-semibold"
+            style={{
+              fontSize: "clamp(2.1rem, 4.6vw, 3.4rem)",
+              lineHeight: 1.08,
+              letterSpacing: "-0.035em",
+              color: "#18191c",
+            }}
+          >
+            <span className="block">{hero.lead}</span>
+            <span className="block mt-1">
+              Mas seus <span className="lp-accent">agendamentos</span> não precisam parar.
+            </span>
           </h1>
 
-          <p className="lp-lead" style={{ maxWidth: 680 }}>
-            {hero.support}
+          <p
+            className="mt-6 font-medium"
+            style={{
+              fontSize: "clamp(1.05rem, 1.8vw, 1.3rem)",
+              lineHeight: 1.5,
+              color: "#2f3238",
+              maxWidth: 780,
+            }}
+          >
+            Cada paciente atendido na hora certa é uma oportunidade a mais de{" "}
+            <span className="lp-accent">faturamento</span>.
           </p>
 
-          <a href="#diagnostico" onClick={handleCta} className="lp-btn mt-2">
-            {hero.cta}
-          </a>
+          {/* Bloco de destaque — Secretária Inteligente */}
+          <div className="mt-9 w-full" style={{ maxWidth: 860 }}>
+            <p
+              style={{
+                fontSize: "clamp(1.125rem, 2.1vw, 1.5rem)",
+                lineHeight: 1.55,
+                color: "#2f3238",
+              }}
+            >
+              Imagine uma{" "}
+              <span className="brand-highlight">Secretária Inteligente</span> que responde em
+              segundos, conversa naturalmente, tira dúvidas e transforma o interesse em
+              consultas agendadas.
+            </p>
+          </div>
+
+          <div className="mt-7 flex flex-col items-center gap-3">
+            <p
+              className="font-medium"
+              style={{ fontSize: "1.0625rem", color: "#2f3238" }}
+            >
+              Tudo no WhatsApp, <span className="lp-accent">24 horas por dia</span>, com o jeito
+              de atender da sua clínica.
+            </p>
+            <p
+              className="text-sm"
+              style={{ color: "#6d6f74", maxWidth: 620 }}
+            >
+              {hero.closing}
+            </p>
+          </div>
         </motion.div>
 
-        {/* Rótulos estáticos + celular */}
+        {/* Rótulos estáticos + celular com vídeo */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -87,8 +133,7 @@ export function Hero() {
                 className="px-5 py-2 rounded-full text-[0.84375rem] font-bold"
                 style={{
                   color: i === 0 ? "#fff" : "#111b21",
-                  background:
-                    i === 0 ? "var(--brand-grad)" : "transparent",
+                  background: i === 0 ? "var(--brand-grad)" : "transparent",
                 }}
               >
                 {label}
@@ -97,7 +142,7 @@ export function Hero() {
           </div>
 
           <div className="relative w-full" style={{ perspective: 1400 }}>
-            <HeroEvents activeAction={activeHeroAction} />
+            <HeroEvents activeAction={activeAction} />
 
             <div className="relative flex justify-center">
               <div className="relative">
@@ -112,7 +157,7 @@ export function Hero() {
                 />
                 <div className="relative z-10 origin-top scale-[0.82] sm:scale-[0.9] lg:scale-100">
                   <SmartphoneFrame>
-                    <RealChat lines={lines} isTyping={isTyping} />
+                    <PhoneVideo onTime={onTime} />
                   </SmartphoneFrame>
                 </div>
               </div>

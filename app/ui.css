@@ -99,6 +99,30 @@
     color: var(--brand);
   }
 
+  /* Destaque editorial — palavra-chave com gradiente e traço sutil */
+  .brand-highlight {
+    position: relative;
+    display: inline-block;
+    font-weight: 700;
+    white-space: nowrap;
+    background: var(--brand-grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  .brand-highlight::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -3px;
+    height: 2px;
+    border-radius: 9999px;
+    background: var(--brand-grad);
+    opacity: 0.4;
+  }
+
   /* ── Botões ──────────────────────────────────────────────────────────── */
   .lp-btn {
     display: inline-flex;

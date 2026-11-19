@@ -62,13 +62,6 @@ export function Header() {
         {/* Desktop actions */}
         <div className="hidden lg:flex items-center gap-3">
           <a
-            href="#"
-            className="text-sm transition-opacity duration-150 hover:opacity-60"
-            style={{ color: "#212327" }}
-          >
-            {nav.login}
-          </a>
-          <a
             href="#diagnostico"
             onClick={(e) => handleCta(e, "header")}
             className="lp-btn !py-2.5 !px-5 !text-[0.8125rem] !rounded-[10px]"

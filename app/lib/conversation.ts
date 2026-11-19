@@ -83,5 +83,5 @@ export const CASE_STEPS = [
   { title: "Consulta agendada", detail: "Hoje, 16h · confirmada" },
 ];
 
-export const LINE_INTERVAL = 720;
+export const LINE_INTERVAL = 2000;
 export const RESTART_DELAY = 3200;

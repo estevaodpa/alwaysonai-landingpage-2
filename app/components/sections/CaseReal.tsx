@@ -81,13 +81,11 @@ export function CaseReal() {
 
       {/* Corpo: celular + painéis (empilha no mobile) */}
       <div className="flex flex-1 flex-col items-center gap-5 overflow-hidden lg:flex-row lg:items-stretch lg:gap-4">
-        {/* Celular real */}
-        <div className="shrink-0" style={{ width: 245, height: 504 }}>
-          <div style={{ transform: "scale(0.72)", transformOrigin: "top left" }}>
-            <SmartphoneFrame>
-              <RealChat lines={lines} isTyping={isTyping} />
-            </SmartphoneFrame>
-          </div>
+        {/* Celular real — zoom em vez de transform para manter o texto nítido */}
+        <div className="shrink-0" style={{ zoom: 0.82 }}>
+          <SmartphoneFrame>
+            <RealChat lines={lines} isTyping={isTyping} />
+          </SmartphoneFrame>
         </div>
 
         {/* Caminho da IA + métricas */}

@@ -10,7 +10,7 @@ const NOTIFICATION_AT = 52.5;
 const VIDEO_SRC = "/videos/video_demo_ia_agendamento.mp4";
 const POSTER_SRC = "/videos/demo-poster.jpg";
 
-export function PhoneVideo() {
+export function PhoneVideo({ onTime }: { onTime?: (seconds: number) => void }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [showNotification, setShowNotification] = useState(false);
 
@@ -39,6 +39,7 @@ export function PhoneVideo() {
       // Mostra a notificação a partir do momento da confirmação;
       // esconde quando o vídeo reinicia o loop (volta para 0).
       setShowNotification(video.currentTime >= NOTIFICATION_AT);
+      onTime?.(video.currentTime);
     };
 
     const onEnded = () => setShowNotification(false);
@@ -52,7 +53,7 @@ export function PhoneVideo() {
       video.removeEventListener("timeupdate", onTimeUpdate);
       video.removeEventListener("ended", onEnded);
     };
-  }, []);
+  }, [onTime]);
 
   return (
     <div className="relative w-full h-full overflow-hidden bg-[#0b141a]">

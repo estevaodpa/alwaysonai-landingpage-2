@@ -25,17 +25,21 @@ export const nav = {
 
 // ── Hero ────────────────────────────────────────────────────────────────────
 export const hero = {
-  titleLine1: "A secretária inteligente das clínicas",
-  titleLine2: "que não perdem paciente.",
-  titleLine3: "Feita para a sua clínica, personalizada para cada cliente.",
+  lead: "Sua clínica pode estar fechada.",
+  leadHi: "Mas seus agendamentos não precisam parar.",
+  opportunity:
+    "Cada paciente atendido na hora certa é uma oportunidade a mais de faturamento.",
+  promise:
+    "Imagine uma Secretária Inteligente que responde em segundos, conversa naturalmente, tira dúvidas e transforma o interesse em consultas agendadas.",
   support:
-    "A secretária inteligente da alwayson.ai atende no WhatsApp, tira dúvidas, qualifica o paciente e agenda a consulta — com a linguagem e as regras da sua clínica.",
-  cta: "COMEÇAR AGORA",
+    "Tudo no WhatsApp, 24 horas por dia, com o jeito de atender da sua clínica.",
+  closing:
+    "Enquanto sua equipe cuida dos pacientes, sua agenda continua trabalhando.",
 };
 
 // ── Marquee de parceiras ────────────────────────────────────────────────────
 export const marquee = {
-  headline: "Clínicas que já têm a secretária inteligente",
+  headline: "Clínicas que não perdem mais clientes com a Secretária Inteligente",
   logos: [
     { src: "/parceiros/logo-clinica-renovahair.webp", alt: "Clínica RenovaHair", w: 330 },
     { src: "/parceiros/logo-de-clinica-odontologica-luxuosa.webp", alt: "Clínica Odontológica Luxuosa", w: 215 },
@@ -141,25 +145,11 @@ export const niches = {
       image: "/produto/leads_e_procedimentos_esteticista.png",
     },
     {
-      name: "Dermatologia",
-      question: "Vocês atendem convênio?",
-      answer:
-        "Informa as regras do seu consultório, explica as condições de pagamento e segue com o pedido do paciente.",
-      image: "/produto/leads_e_procedimentos_medico.png",
-    },
-    {
       name: "Clínica geral",
       question: "A consulta é particular?",
       answer:
         "Explica as formas de pagamento, os convênios aceitos e agenda a avaliação sem ninguém da equipe encostar no celular.",
       image: "/produto/leads_e_procedimentos_medico.png",
-    },
-    {
-      name: "Fisioterapia",
-      question: "Preciso de encaminhamento?",
-      answer:
-        "Confere o protocolo da sua clínica, informa a documentação necessária e deixa o próximo passo agendado.",
-      image: "/produto/leads_e_procedimentos_esteticista.png",
     },
   ],
 };
