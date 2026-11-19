@@ -25,26 +25,29 @@ export const nav = {
 
 // ── Hero ────────────────────────────────────────────────────────────────────
 export const hero = {
-  badges: [
-    { label: "Feito para clínicas de saúde", kind: "outline" as const },
-    { label: "Diagnóstico da sua clínica", kind: "new" as const },
-  ],
-  titleLine1: "Seu WhatsApp atendendo, qualificando e",
-  titleLine2: "agendando 24 horas por dia",
+  titleLine1: "A secretária inteligente das clínicas",
+  titleLine2: "que não perdem paciente.",
+  titleLine3: "Feita para a sua clínica, personalizada para cada cliente.",
   support:
-    "A IA da alwayson.ai responde na hora, tira dúvidas, qualifica o paciente e marca o horário. Sua equipe só entra quando a venda está pronta.",
+    "A secretária inteligente da alwayson.ai atende no WhatsApp, tira dúvidas, qualifica o paciente e agenda a consulta — com a linguagem e as regras da sua clínica.",
   cta: "COMEÇAR AGORA",
-  ctaMicro: "Faça o diagnóstico da sua clínica. Leva 2 minutos.",
 };
 
-// ── Marquee de clientes ─────────────────────────────────────────────────────
+// ── Marquee de parceiras ────────────────────────────────────────────────────
 export const marquee = {
-  headline: "Clínicas que já atendem com IA todos os dias",
-  names: [
-    "Júlia Marinho · Estética",
-    "Giuliano Clovalski · Implante",
-    "Larissa Otorrino · Otorrinolaringologia",
-    "Doutora Camila Sousa · Odontologia",
+  headline: "Clínicas que já têm a secretária inteligente",
+  logos: [
+    { src: "/parceiros/logo-clinica-renovahair.webp", alt: "Clínica RenovaHair", w: 330 },
+    { src: "/parceiros/logo-de-clinica-odontologica-luxuosa.webp", alt: "Clínica Odontológica Luxuosa", w: 215 },
+    { src: "/parceiros/logo-dourado-espaco-bella-forma.webp", alt: "Espaço Bella Forma", w: 215 },
+    { src: "/parceiros/logo-elegante-espaco-elegance.webp", alt: "Espaço Elegance", w: 220 },
+    { src: "/parceiros/logo-futurista-koa-saude-integrada.webp", alt: "KOA Saúde Integrada", w: 165 },
+    { src: "/parceiros/logo-luxuoso-dermabelle-em-rose-gold.webp", alt: "DERMABELLE", w: 215 },
+    { src: "/parceiros/logo-luxuoso-studio-lumina.webp", alt: "Studio Lumina", w: 215 },
+    { src: "/parceiros/logo-minimalista-do-instituto-renova-hair.webp", alt: "Instituto Renova Hair", w: 215 },
+    { src: "/parceiros/logo-minimalista-ellos-saude-integrada.webp", alt: "ELLOS Saúde Integrada", w: 165 },
+    { src: "/parceiros/logo-odontoprime-com-sorriso-azul.webp", alt: "OdontoPrime", w: 215 },
+    { src: "/parceiros/logo-premium-clinica-vitta-essence.webp", alt: "Vitta Essence", w: 165 },
   ],
 };
 

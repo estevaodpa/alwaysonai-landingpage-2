@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { features } from "../../lib/copy";
 import { Reveal } from "../ui/primitives";
-import { WhatsAppChat } from "../product/WhatsAppChat";
+import { CaseReal } from "./CaseReal";
 import { DynamicWord } from "../product/DynamicWord";
 
 /** Card com borda gradiente — técnica do modelo (padding 1px + gradiente). */
@@ -85,59 +85,15 @@ export function Features() {
               <DynamicWord />
             </div>
           </Reveal>
-          <Reveal delay={0.14}>
-            <p className="lp-lead lp-lead-dark" style={{ maxWidth: 841 }}>
-              {features.support}
-            </p>
-          </Reveal>
         </div>
 
         {/* Mosaico — 4 colunas × 2 linhas, gap 12px */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-          {/* A — 2×2, chat */}
+          {/* A — 2×2, Case Real */}
           <Reveal className="md:col-span-2 lg:row-span-2">
             <Frame>
-              <div className="flex flex-col gap-4 p-5 h-full">
-                <div>
-                  <span className="lp-label" style={{ color: "var(--on-dark-3)" }}>
-                    {features.items[0].tag}
-                  </span>
-                  <h3
-                    className="mt-2.5 font-semibold"
-                    style={{
-                      fontSize: "1.25rem",
-                      lineHeight: 1.25,
-                      letterSpacing: "-0.015em",
-                      color: "var(--on-dark)",
-                    }}
-                  >
-                    {features.items[0].title}
-                  </h3>
-                  <p
-                    className="mt-2 text-sm leading-relaxed"
-                    style={{ color: "var(--on-dark-3)" }}
-                  >
-                    {features.items[0].body}
-                  </p>
-                </div>
-
-                <LightPanel className="flex-1 mt-1">
-                  <div className="flex h-full min-h-[300px] items-end justify-center">
-                    <div
-                      className="overflow-hidden"
-                      style={{
-                        width: 230,
-                        height: 280,
-                        borderRadius: "16px 16px 0 0",
-                        border: "1px solid rgba(24,25,28,0.08)",
-                        borderBottom: "none",
-                        background: "#0b141a",
-                      }}
-                    >
-                      <WhatsAppChat />
-                    </div>
-                  </div>
-                </LightPanel>
+              <div className="h-full p-5">
+                <CaseReal />
               </div>
             </Frame>
           </Reveal>

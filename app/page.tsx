@@ -3,7 +3,6 @@ import { Header } from "./components/sections/Header";
 import { Hero } from "./components/sections/Hero";
 import { LogoMarquee } from "./components/sections/LogoMarquee";
 import { Features } from "./components/sections/Features";
-import { ThreeSteps } from "./components/sections/ThreeSteps";
 import { Niches } from "./components/sections/Niches";
 import { Dashboard } from "./components/sections/Dashboard";
 import { Integrations } from "./components/sections/Integrations";
@@ -29,7 +28,6 @@ export default function Home() {
         {/* Bloco escuro contínuo — mesmo ritmo de contraste do modelo */}
         <div style={{ background: "var(--bg-dark-2)" }}>
           <Features />
-          <ThreeSteps />
           <Niches />
           <Dashboard />
           <Integrations />
