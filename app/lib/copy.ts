@@ -455,7 +455,6 @@ export const footer = {
       title: "Suporte",
       links: [
         { label: "Perguntas frequentes", href: "#faq" },
-        { label: "Entrar na plataforma", href: "#" },
         { label: "Falar com um especialista", href: "#diagnostico" },
       ],
     },
