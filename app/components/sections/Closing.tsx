@@ -1,92 +1,103 @@
 "use client";
 
-import Image from "next/image";
-import { closing } from "../../lib/copy";
+import { motion } from "framer-motion";
 import { trackCtaClick } from "../../lib/analytics";
 import { Reveal } from "../ui/primitives";
 
+const EASE = [0.16, 1, 0.3, 1] as const;
+
 const WHATSAPP_URL =
-  "https://wa.me/5564999877992?text=Oi!%20Vim%20pelo%20site%20da%20alwayson.ai%20e%20quero%20falar%20sobre%20a%20minha%20cl%C3%ADnica.";
+  "https://wa.me/5564999877992?text=Oi!%20Quero%20a%20Secret%C3%A1ria%20Inteligente%20na%20minha%20cl%C3%ADnica.";
 
 export function Closing() {
   return (
-    <section className="relative pt-8 pb-16 lg:pb-24">
+    <section className="relative py-10 lg:py-16" style={{ background: "#0b0d10" }}>
       <div className="lp-container">
         <Reveal>
           <div
-            className="relative overflow-hidden rounded-3xl"
-            style={{ background: "#0f1012", minHeight: 520 }}
+            className="relative overflow-hidden rounded-3xl px-6 py-14 lg:px-16 lg:py-20 text-center"
+            style={{
+              background:
+                "radial-gradient(90% 120% at 50% 0%, #123a52 0%, #0d222f 38%, #0f1012 78%)",
+              border: "1px solid rgba(0,168,255,0.26)",
+              boxShadow: "0 40px 100px rgba(0,0,0,0.5)",
+            }}
           >
-            {/* Foto */}
-            <Image
-              src="/produto/foto_agendamento_grupo.png"
-              alt="Atendimento do WhatsApp com consulta agendada pela IA"
-              width={1074}
-              height={738}
-              className="absolute inset-0 w-full h-full object-cover object-right"
-              style={{ opacity: 0.55 }}
-              loading="lazy"
-              decoding="async"
-            />
-
-            {/* Overlay */}
+            {/* Grade sutil — sem imagem vazando */}
             <div
-              className="absolute inset-0"
+              className="absolute inset-0 opacity-[0.05]"
               style={{
-                background:
-                  "linear-gradient(90deg, rgba(10,12,16,0.98) 0%, rgba(10,12,16,0.92) 40%, rgba(10,12,16,0.35) 100%)",
+                backgroundImage:
+                  "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
+                backgroundSize: "70px 70px",
+                maskImage:
+                  "radial-gradient(ellipse at center, black 10%, transparent 72%)",
+                WebkitMaskImage:
+                  "radial-gradient(ellipse at center, black 10%, transparent 72%)",
               }}
               aria-hidden="true"
             />
             <div
-              className="absolute inset-0"
+              className="absolute pointer-events-none left-1/2 -translate-x-1/2"
               style={{
+                top: -280,
+                width: 900,
+                height: 460,
+                borderRadius: "50%",
                 background:
-                  "radial-gradient(60% 70% at 15% 50%, rgba(0,120,255,0.18) 0%, transparent 70%)",
+                  "radial-gradient(50% 50% at 50% 50%, rgba(0,168,255,0.32) 0%, rgba(0,80,200,0.12) 45%, transparent 72%)",
+                filter: "blur(30px)",
               }}
               aria-hidden="true"
             />
 
-            {/* Conteúdo alinhado à esquerda — como no modelo */}
-            <div className="relative flex flex-col items-start justify-center gap-6 p-8 sm:p-12 lg:p-16 min-h-[520px]">
+            <div className="relative flex flex-col items-center gap-6">
               <span className="lp-label" style={{ color: "#4dc3ff" }}>
-                Para empresas
+                A decisão é sua
               </span>
 
-              <h2
+              <motion.h2
+                initial={{ clipPath: "inset(0 0 100% 0)", y: 24, opacity: 0 }}
+                whileInView={{ clipPath: "inset(0 0 0% 0)", y: 0, opacity: 1 }}
+                viewport={{ once: true, margin: "-12% 0px" }}
+                transition={{ duration: 0.8, ease: EASE }}
                 className="font-semibold"
                 style={{
-                  fontSize: "clamp(1.85rem, 3.6vw, 2.75rem)",
-                  lineHeight: 1.14,
-                  letterSpacing: "-0.025em",
-                  color: "#ffffff",
-                  maxWidth: 520,
+                  fontSize: "clamp(2rem, 4.4vw, 3.25rem)",
+                  lineHeight: 1.12,
+                  letterSpacing: "-0.03em",
+                  color: "var(--on-dark)",
+                  maxWidth: 900,
                 }}
               >
-                Operação maior?{" "}
-                <span className="lp-accent">
-                  A gente desenha tudo para a sua clínica.
-                </span>
-              </h2>
+                E se o seu WhatsApp respondesse{" "}
+                <span className="lp-accent">antes da sua equipe?</span>
+              </motion.h2>
 
               <p
-                className="text-base leading-relaxed"
-                style={{ color: "rgba(255,255,255,0.45)", maxWidth: 460 }}
+                className="text-base leading-relaxed sm:text-lg"
+                style={{ color: "var(--on-dark-2)", maxWidth: 680 }}
               >
-                {closing.line1}
+                Enquanto você decidir, o paciente já está conversando com outra clínica.
+                Coloque a Secretária Inteligente para trabalhar por você — hoje.
               </p>
 
-              <a
+              <motion.a
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => trackCtaClick("closing")}
-                className="lp-btn mt-2"
+                onClick={() => trackCtaClick("closing_final")}
+                initial={{ opacity: 0, y: 20, scale: 0.96 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.25, ease: EASE }}
+                className="lp-btn mt-3 !px-8 !py-5 !text-base"
               >
-                Falar com um especialista
-              </a>
-              <p className="text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>
-                Respondemos no WhatsApp. Sem compromisso.
+                Secretária Inteligente na minha clínica
+              </motion.a>
+
+              <p className="text-sm" style={{ color: "var(--on-dark-3)" }}>
+                Sem compromisso. A gente mostra na prática.
               </p>
             </div>
           </div>

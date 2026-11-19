@@ -7,11 +7,11 @@ import { Features } from "./components/sections/Features";
 import { Niches } from "./components/sections/Niches";
 import { Dashboard } from "./components/sections/Dashboard";
 import { Comparison } from "./components/sections/Comparison";
-import { Ready } from "./components/sections/Ready";
 import { AgendaIntegrada } from "./components/sections/AgendaIntegrada";
-import { Closing } from "./components/sections/Closing";
 import { Testimonials } from "./components/sections/Testimonials";
+import { Ready } from "./components/sections/Ready";
 import { Faq } from "./components/sections/Faq";
+import { Closing } from "./components/sections/Closing";
 import { Footer } from "./components/sections/Footer";
 import { WhatsAppFloat } from "./components/sections/WhatsAppFloat";
 
@@ -25,20 +25,26 @@ export default function Home() {
         <LogoMarquee />
         <CasesReais />
 
-        {/* Bloco escuro contínuo */}
+        {/* Escuro — até a agenda */}
         <div style={{ background: "var(--bg-dark-2)" }}>
           <Features />
           <Niches />
           <Dashboard />
           <Comparison />
-          <Ready />
           <AgendaIntegrada />
-          <Closing />
         </div>
 
-        {/* Claro */}
+        {/* Depoimentos logo abaixo da agenda */}
         <Testimonials />
+
+        {/* Entregue pronto + FAQ */}
+        <div style={{ background: "var(--bg-dark-2)" }}>
+          <Ready />
+        </div>
         <Faq />
+
+        {/* CTA final — última seção */}
+        <Closing />
       </main>
       <Footer />
       <WhatsAppFloat />

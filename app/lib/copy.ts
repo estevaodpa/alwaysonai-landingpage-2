@@ -334,6 +334,7 @@ export const testimonials = {
       quote:
         "Recebia reclamação todo dia por demora e a equipe vivia sobrecarregada. Com a IA da alwayson.ai, ela entende o paciente, responde a qualquer hora e até fecha venda sozinha. Na primeira semana o tempo de resposta já tinha caído para menos de uma hora.",
       image: "/proofs/julia.png",
+      avatar: "/proofs/avatars/julia.webp",
       width: 600,
       height: 404,
       highlight: "Desafogou muitooo",
@@ -344,6 +345,7 @@ export const testimonials = {
       quote:
         "Nosso fluxo antigo falhava toda vez que o cliente saía do menu, e as conversas se perdiam. Agora o assistente conversa de forma natural e responde perguntas detalhadas sobre os procedimentos.",
       image: "/proofs/giuliano.png",
+      avatar: "/proofs/avatars/giuliano.webp",
       width: 600,
       height: 405,
       highlight: "Ontem mesmo a IA marcou 12 consultas",
@@ -354,6 +356,7 @@ export const testimonials = {
       quote:
         "Atender pacientes era grupo de WhatsApp sem fim e planilha manual. Com a alwayson.ai padronizei o atendimento, automatizei as planilhas e hoje atendemos mais gente por dia.",
       image: "/proofs/larissa.png",
+      avatar: "/proofs/avatars/larissa.webp",
       width: 600,
       height: 400,
       highlight: "não contratei uma atendente não, foi uma sócia kkk",
@@ -364,6 +367,7 @@ export const testimonials = {
       quote:
         "Percebi que a demora para responder estava me custando consultas. Com a alwayson.ai automatizei agendamentos e orçamentos, e ninguém mais espera. Depois da IA, os pacientes quase não pedem para falar com uma pessoa.",
       image: "/proofs/camilla.png",
+      avatar: "/proofs/avatars/camilla.webp",
       width: 600,
       height: 409,
       highlight:
@@ -395,7 +399,7 @@ export const faq = {
   kicker: "Perguntas frequentes",
   title: "Ficou alguma dúvida?",
   support:
-    "Se não estiver aqui, o diagnóstico faz o resto — respondemos direto no WhatsApp.",
+    "Se não estiver aqui, fale direto com a gente no WhatsApp.",
   items: [
     {
       q: "A IA vai atender meus pacientes sozinha? E se ela errar?",
