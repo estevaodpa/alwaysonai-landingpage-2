@@ -92,7 +92,7 @@ export function Closing() {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.25, ease: EASE }}
-                className="lp-btn mt-3 !px-8 !py-5 !text-base"
+                className="lp-btn mt-3 w-full max-w-full !whitespace-normal !px-5 !py-4 !text-sm sm:w-auto sm:!px-8 sm:!py-5 sm:!text-base"
               >
                 Secretária Inteligente na minha clínica
               </motion.button>

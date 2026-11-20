@@ -10,9 +10,12 @@ export function LogoMarquee() {
   const items = [...marquee.logos, ...marquee.logos];
 
   return (
-    <section className="relative pt-2 pb-10 lg:pb-14">
-      <div className="lp-container flex flex-col items-center gap-5" style={{ maxWidth: 1180 }}>
-        <Reveal>
+    <section className="relative pt-2 pb-10 lg:pb-14" style={{ overflowX: "clip" }}>
+      <div
+        className="lp-container flex flex-col items-center gap-5 w-full min-w-0"
+        style={{ maxWidth: 1180 }}
+      >
+        <Reveal className="w-full">
           <p
             className="text-center font-semibold"
             style={{ fontSize: "1rem", color: "#18191c" }}
@@ -21,8 +24,8 @@ export function LogoMarquee() {
           </p>
         </Reveal>
 
-        <Reveal delay={0.08}>
-          <div className="lp-marquee w-full">
+        <Reveal delay={0.08} className="w-full min-w-0">
+          <div className="lp-marquee w-full max-w-full" style={{ maxWidth: "100%" }}>
             <motion.div
               className="flex w-max"
               animate={{ x: ["0%", "-50%"] }}

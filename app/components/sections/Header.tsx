@@ -69,6 +69,20 @@ export function Header() {
           </a>
         </div>
 
+        {/* Mobile CTA compacto — sem precisar abrir o menu */}
+        <button
+          type="button"
+          onClick={() => handleCta("header_mobile_cta")}
+          className="lg:hidden shrink-0 rounded-[10px] px-2.5 py-2 text-[0.625rem] font-bold uppercase tracking-wide"
+          style={{
+            background: "linear-gradient(135deg, #1e9cff, #0050c8)",
+            color: "#fff",
+            whiteSpace: "nowrap",
+          }}
+        >
+          Falar agora
+        </button>
+
         {/* Mobile trigger */}
         <button
           onClick={() => setMenuOpen((v) => !v)}

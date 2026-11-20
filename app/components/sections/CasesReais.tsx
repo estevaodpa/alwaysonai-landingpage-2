@@ -130,11 +130,11 @@ export function CasesReais() {
               return (
                 <motion.div
                   key={step.n}
-                  initial={{ opacity: 0, x: alignRight ? 40 : -40, y: 20 }}
-                  whileInView={{ opacity: 1, x: 0, y: 0 }}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-12% 0px" }}
                   transition={{ duration: 0.7, ease: EASE }}
-                  className={`relative pl-14 md:pl-0 md:w-[calc(50%-32px)] ${
+                  className={`relative pl-12 w-full min-w-0 max-w-full md:pl-0 md:w-[calc(50%-32px)] ${
                     alignRight ? "md:ml-auto" : "md:mr-auto"
                   }`}
                 >

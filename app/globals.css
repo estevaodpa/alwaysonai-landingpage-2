@@ -85,6 +85,7 @@
 html {
   scroll-behavior: smooth;
   overflow-x: clip;
+  max-width: 100%;
 }
 
 body {
@@ -93,6 +94,15 @@ body {
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+/* Segurança: nada deve empurrar a página para os lados */
+img,
+video,
+svg {
+  max-width: 100%;
 }
 
 ::selection {

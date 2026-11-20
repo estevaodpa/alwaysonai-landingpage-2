@@ -40,11 +40,11 @@ export function Testimonials() {
         </div>
 
         {/* 2 colunas — prints em tamanho natural, legíveis */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 max-w-[1280px] mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 max-w-[1280px] mx-auto w-full min-w-0">
           {testimonials.items.map((p, i) => (
-            <Reveal key={p.name} delay={i * 0.08}>
+            <Reveal key={p.name} delay={i * 0.08} className="w-full min-w-0">
               <figure
-                className="h-full overflow-hidden"
+                className="h-full overflow-hidden w-full max-w-full"
                 style={{
                   borderRadius: 22,
                   background: "#fff",
@@ -97,9 +97,9 @@ export function Testimonials() {
                 </figcaption>
 
                 {/* Print em resolução natural — qualquer pessoa consegue ler */}
-                <div className="px-4 pt-4">
+                <div className="px-4 pt-4 w-full min-w-0">
                   <div
-                    className="overflow-hidden"
+                    className="overflow-hidden max-w-full"
                     style={{
                       borderRadius: 14,
                       border: "1px solid rgba(24,25,28,0.08)",
