@@ -318,6 +318,22 @@ export const integrations = {
   ],
 };
 
+// ── Diagnóstico (modal de elegibilidade) ────────────────────────────────────
+export const diagnosticUi = {
+  kicker: "Diagnóstico de elegibilidade",
+  introTitle: "Antes de falar com a nossa equipe, precisamos entender a sua operação.",
+  introSupport:
+    "Este diagnóstico determina se a Secretária Inteligente é adequada para a sua clínica.",
+  introMeta: "Sete perguntas sobre a sua operação.",
+  startLabel: "Iniciar análise",
+  contactTitle: "Para concluir a análise, identifique a clínica e o responsável.",
+  contactSupport: "O resultado será encaminhado para o WhatsApp informado.",
+  finishLabel: "Finalizar análise",
+  finalTitle: "Análise concluída.",
+  finalText: "O cenário da sua clínica já está com a nossa equipe.",
+  whatsappLabel: "Continuar pelo WhatsApp",
+};
+
 // ── Provas sociais ──────────────────────────────────────────────────────────
 export const testimonials = {
   kicker: "Quem usa",

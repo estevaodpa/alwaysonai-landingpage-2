@@ -121,7 +121,6 @@ export const diagnosticQuestions: Question[] = [
       { label: "R$ 70 mil a R$ 150 mil", value: "70_150" },
       { label: "R$ 150 mil a R$ 300 mil", value: "150_300" },
       { label: "Acima de R$ 300 mil", value: "300_mais" },
-      { label: "Prefiro não informar", value: "nao_informar" },
     ],
   },
   {

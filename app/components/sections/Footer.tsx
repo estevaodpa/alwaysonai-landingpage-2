@@ -1,8 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import { Logo } from "../ui/Logo";
+import { useDiagnostic } from "../DiagnosticProvider";
 import { brand, footer } from "../../lib/copy";
 
 export function Footer() {
+  const { open } = useDiagnostic();
+
   return (
     <footer className="relative bg-[var(--bg-white)] px-5 md:px-8 pt-12 pb-10">
       <div className="lp-container">
@@ -36,17 +41,30 @@ export function Footer() {
                   {col.title}
                 </h3>
                 <ul className="mt-5 flex flex-col gap-3">
-                  {col.links.map((l) => (
-                    <li key={l.label}>
-                      <Link
-                        href={l.href}
-                        className="text-sm transition-opacity duration-150 hover:opacity-60"
-                        style={{ color: "var(--ink-2)" }}
-                      >
-                        {l.label}
-                      </Link>
-                    </li>
-                  ))}
+                  {col.links.map((l) =>
+                    l.href.startsWith("http") ? (
+                      <li key={l.label}>
+                        <button
+                          type="button"
+                          onClick={open}
+                          className="text-left text-sm transition-opacity duration-150 hover:opacity-60"
+                          style={{ color: "var(--ink-2)" }}
+                        >
+                          {l.label}
+                        </button>
+                      </li>
+                    ) : (
+                      <li key={l.label}>
+                        <Link
+                          href={l.href}
+                          className="text-sm transition-opacity duration-150 hover:opacity-60"
+                          style={{ color: "var(--ink-2)" }}
+                        >
+                          {l.label}
+                        </Link>
+                      </li>
+                    ),
+                  )}
                 </ul>
               </div>
             ))}

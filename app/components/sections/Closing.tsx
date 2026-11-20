@@ -2,14 +2,14 @@
 
 import { motion } from "framer-motion";
 import { trackCtaClick } from "../../lib/analytics";
+import { useDiagnostic } from "../DiagnosticProvider";
 import { Reveal } from "../ui/primitives";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-const WHATSAPP_URL =
-  "https://wa.me/5564999877992?text=Oi!%20Quero%20a%20Secret%C3%A1ria%20Inteligente%20na%20minha%20cl%C3%ADnica.";
-
 export function Closing() {
+  const { open } = useDiagnostic();
+
   return (
     <section className="relative py-10 lg:py-16" style={{ background: "#0b0d10" }}>
       <div className="lp-container">
@@ -82,11 +82,12 @@ export function Closing() {
                 Coloque a Secretária Inteligente para trabalhar por você — hoje.
               </p>
 
-              <motion.a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackCtaClick("closing_final")}
+              <motion.button
+                type="button"
+                onClick={() => {
+                  trackCtaClick("closing_final");
+                  open();
+                }}
                 initial={{ opacity: 0, y: 20, scale: 0.96 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
@@ -94,7 +95,7 @@ export function Closing() {
                 className="lp-btn mt-3 !px-8 !py-5 !text-base"
               >
                 Secretária Inteligente na minha clínica
-              </motion.a>
+              </motion.button>
 
               <p className="text-sm" style={{ color: "var(--on-dark-3)" }}>
                 Sem compromisso. A gente mostra na prática.

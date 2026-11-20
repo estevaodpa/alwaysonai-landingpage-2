@@ -1,4 +1,5 @@
 import { MetaPixelProvider } from "./components/MetaPixelProvider";
+import { DiagnosticProvider } from "./components/DiagnosticProvider";
 import { Header } from "./components/sections/Header";
 import { Hero } from "./components/sections/Hero";
 import { LogoMarquee } from "./components/sections/LogoMarquee";
@@ -18,36 +19,38 @@ import { WhatsAppFloat } from "./components/sections/WhatsAppFloat";
 export default function Home() {
   return (
     <MetaPixelProvider>
-      <Header />
-      <main className="flex-1">
-        {/* Claro */}
-        <Hero />
-        <LogoMarquee />
-        <CasesReais />
+      <DiagnosticProvider>
+        <Header />
+        <main className="flex-1">
+          {/* Claro */}
+          <Hero />
+          <LogoMarquee />
+          <CasesReais />
 
-        {/* Escuro — até a agenda */}
-        <div style={{ background: "var(--bg-dark-2)" }}>
-          <Features />
-          <Niches />
-          <Dashboard />
-          <Comparison />
-          <AgendaIntegrada />
-        </div>
+          {/* Escuro — até a agenda */}
+          <div style={{ background: "var(--bg-dark-2)" }}>
+            <Features />
+            <Niches />
+            <Dashboard />
+            <Comparison />
+            <AgendaIntegrada />
+          </div>
 
-        {/* Depoimentos logo abaixo da agenda */}
-        <Testimonials />
+          {/* Depoimentos logo abaixo da agenda */}
+          <Testimonials />
 
-        {/* Entregue pronto + FAQ */}
-        <div style={{ background: "var(--bg-dark-2)" }}>
-          <Ready />
-        </div>
-        <Faq />
+          {/* Entregue pronto + FAQ */}
+          <div style={{ background: "var(--bg-dark-2)" }}>
+            <Ready />
+          </div>
+          <Faq />
 
-        {/* CTA final — última seção */}
-        <Closing />
-      </main>
-      <Footer />
-      <WhatsAppFloat />
+          {/* CTA final — última seção */}
+          <Closing />
+        </main>
+        <Footer />
+        <WhatsAppFloat />
+      </DiagnosticProvider>
     </MetaPixelProvider>
   );
 }

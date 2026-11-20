@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Logo } from "../ui/Logo";
+import { useDiagnostic } from "../DiagnosticProvider";
 import { nav } from "../../lib/copy";
 import { trackCtaClick } from "../../lib/analytics";
 
@@ -10,6 +11,7 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { open } = useDiagnostic();
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -18,13 +20,10 @@ export function Header() {
     };
   }, [menuOpen]);
 
-  const WHATSAPP_URL =
-    "https://wa.me/5564999877992?text=Oi!%20Vim%20pelo%20site%20da%20alwayson.ai%20e%20quero%20falar%20sobre%20a%20minha%20cl%C3%ADnica.";
-
   const handleCta = (location: string) => {
     trackCtaClick(location);
     setMenuOpen(false);
-    window.open(WHATSAPP_URL, "_blank", "noopener,noreferrer");
+    open();
   };
 
   return (
@@ -62,7 +61,7 @@ export function Header() {
         {/* Desktop actions */}
         <div className="hidden lg:flex items-center gap-3">
           <a
-            href={WHATSAPP_URL}
+            href="#diagnostico"
             onClick={() => handleCta("header")}
             className="lp-btn !py-2.5 !px-5 !text-[0.8125rem] !rounded-[10px]"
           >
@@ -119,7 +118,7 @@ export function Header() {
                 </a>
               ))}
               <a
-                href={WHATSAPP_URL}
+                href="#diagnostico"
                 onClick={() => handleCta("header_mobile")}
                 className="lp-btn mt-4 w-full"
               >

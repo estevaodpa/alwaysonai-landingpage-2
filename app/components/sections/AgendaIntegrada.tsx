@@ -3,12 +3,10 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Reveal } from "../ui/primitives";
+import { useDiagnostic } from "../DiagnosticProvider";
 import { trackCtaClick } from "../../lib/analytics";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
-
-const WHATSAPP_URL =
-  "https://wa.me/5564999877992?text=Oi!%20Vim%20pelo%20site%20da%20alwayson.ai%20e%20quero%20falar%20sobre%20a%20minha%20cl%C3%ADnica.";
 
 const BENEFITS = [
   { title: "Agenda sempre atualizada", detail: "Cada consulta marcada no WhatsApp entra na agenda automaticamente." },
@@ -17,6 +15,8 @@ const BENEFITS = [
 ];
 
 export function AgendaIntegrada() {
+  const { open } = useDiagnostic();
+
   return (
     <section id="agenda" className="relative pt-10 lg:pt-[40px] pb-10 lg:pb-[40px]">
       <div className="lp-container">
@@ -144,15 +144,16 @@ export function AgendaIntegrada() {
             ))}
 
             <Reveal delay={0.36}>
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackCtaClick("agenda_integrada")}
+              <button
+                type="button"
+                onClick={() => {
+                  trackCtaClick("agenda_integrada");
+                  open();
+                }}
                 className="lp-btn mt-2 w-fit"
               >
                 Ver a agenda funcionando
-              </a>
+              </button>
             </Reveal>
           </div>
         </div>
