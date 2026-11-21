@@ -60,13 +60,13 @@ export function Header() {
 
         {/* Desktop actions */}
         <div className="hidden lg:flex items-center gap-3">
-          <a
-            href="#diagnostico"
+          <button
+            type="button"
             onClick={() => handleCta("header")}
             className="lp-btn !py-2.5 !px-5 !text-[0.8125rem] !rounded-[10px]"
           >
             {nav.cta}
-          </a>
+          </button>
         </div>
 
         {/* Mobile CTA compacto — sem precisar abrir o menu */}
@@ -131,13 +131,13 @@ export function Header() {
                   {link.label}
                 </a>
               ))}
-              <a
-                href="#diagnostico"
+              <button
+                type="button"
                 onClick={() => handleCta("header_mobile")}
                 className="lp-btn mt-4 w-full"
               >
                 {nav.cta}
-              </a>
+              </button>
             </nav>
           </motion.div>
         )}

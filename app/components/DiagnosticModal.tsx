@@ -138,6 +138,10 @@ export function DiagnosticModal({
       setStepIdx(steps.length - 1);
       return;
     }
+    if (phase === "questions" && stepIdx === 0) {
+      setPhase("intro");
+      return;
+    }
     if (stepIdx > 0) {
       setDirection(-1);
       setStepIdx(stepIdx - 1);
@@ -491,17 +495,17 @@ export function DiagnosticModal({
                     <div className="mt-6 flex flex-col gap-4">
                       {[
                         {
-                          label: "Nome do responsável",
+                          label: "Seu Nome",
                           value: contact.name,
                           onChange: (v: string) => setContact((c) => ({ ...c, name: v })),
-                          placeholder: "Nome completo",
+                          placeholder: "Seu nome",
                           autoComplete: "name",
                         },
                         {
                           label: "Nome da clínica",
                           value: contact.clinic,
                           onChange: (v: string) => setContact((c) => ({ ...c, clinic: v })),
-                          placeholder: "Razão ou nome fantasia",
+                          placeholder: "Nome da clínica",
                           autoComplete: "organization",
                         },
                         {

@@ -14,13 +14,13 @@ export const brand = {
 // ── Navegação ───────────────────────────────────────────────────────────────
 export const nav = {
   links: [
-    { label: "Como funciona", href: "#como-funciona" },
-    { label: "Recursos", href: "#recursos" },
-    { label: "Painel", href: "#painel" },
-    { label: "Perguntas", href: "#faq" },
+    { label: "A solução", href: "#recursos" },
+    { label: "Como funciona", href: "#painel" },
+    { label: "Provas", href: "#depoimentos" },
+    { label: "Dúvidas", href: "#faq" },
   ],
   login: "Entrar na plataforma",
-  cta: "Falar com um especialista",
+  cta: "Quero ter a Secretária Inteligente",
 };
 
 // ── Hero ────────────────────────────────────────────────────────────────────
@@ -55,7 +55,7 @@ export const hero = {
       detail: "As suas regras, os seus valores, o seu tom de voz.",
     },
   ],
-  cta: "Falar com um especialista",
+  cta: "Quero ter a Secretária Inteligente",
 };
 
 // ── Marquee de parceiras ────────────────────────────────────────────────────
@@ -503,7 +503,7 @@ export const footer = {
       links: [
         { label: "Perguntas frequentes", href: "#faq" },
         {
-          label: "Falar com um especialista",
+          label: "Quero ter a Secretária Inteligente",
           href: "https://wa.me/5564999877992",
         },
       ],
@@ -511,8 +511,6 @@ export const footer = {
     {
       title: "Legal",
       links: [
-        { label: "Termos de Serviço", href: "#" },
-        { label: "Política de Privacidade", href: "#" },
         { label: "Jurídico: juridico@alwayson.ai", href: "mailto:juridico@alwayson.ai" },
       ],
     },
