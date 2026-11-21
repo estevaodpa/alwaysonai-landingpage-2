@@ -79,34 +79,40 @@ export const marquee = {
 // ── Consciência de preço (substitui a antiga seção Recursos) ───────────────
 export const priceConsciousness = {
   kicker: "Antes de comparar preços",
-  title: "A barata sai caro.",
-  titleHi: "",
+  // Título gigante: BARATO em vermelho, CARO em azul elétrico.
+  titleParts: [
+    { t: "O\u00a0", color: "white" },
+    { t: "BARATO", color: "red" },
+    { t: "\u00a0SAI\u00a0", color: "white" },
+    { t: "CARO", color: "blue" },
+    { t: ".", color: "white" },
+  ] as { t: string; color: "white" | "red" | "blue" }[],
   support:
-    "IA genérica responde. A sua secretária fecha agendamento. Entenda a diferença antes de decidir.",
-  labelGeneric: "IA genérica de mercado",
-  labelSmart: "Secretária Inteligente alwayson.ai",
-  // NOTA: 40% é exemplo ilustrativo. Trocar por dado real da operação quando houver.
+    "A IA genérica é mais barata. E é exatamente por isso que ela sai caro.",
+  labelGeneric: "MAIS BARATA · IA GENÉRICA DE MERCADO",
+  labelSmart: "SECRETÁRIA INTELIGENTE alwayson.ai",
+  // NOTA: 40% e 87% são exemplos ilustrativos. Trocar por dados reais quando houver.
   statGeneric: {
     value: 40,
     suffix: "%",
-    text: "dos agendamentos se perdem em operações que usam IA genérica",
+    text: "dos agendamentos são perdidos só porque a IA acha que responder já é suficiente",
   },
   statSmart: {
-    value: 100,
+    value: 87,
     suffix: "%",
-    text: "dos contatos são conduzidos até uma decisão — resposta, qualificação e horário",
+    text: "dos contatos viram agendamento porque a IA conhece a clínica e conduz até o fim",
   },
   generic: [
-    "Responde qualquer coisa, sem conhecer a clínica",
-    "Não qualifica quem tem interesse real",
-    "Não conversa com a sua agenda",
-    "Não faz follow-up de quem não responde",
+    "Achata o paciente com resposta pronta",
+    "Não qualifica ninguém",
+    "Não integra com a sua agenda",
+    "Esquece quem não respondeu",
   ],
   smart: [
-    "Conhece procedimentos, valores e regras da sua clínica",
-    "Qualifica e separa quem está pronto para agendar",
-    "Marca o horário direto na sua agenda",
-    "Conduz o paciente até o agendamento",
+    "Sabe procedimento, valor e regra da clínica",
+    "Qualifica e separa quem quer comprar",
+    "Marca na agenda sozinha",
+    "Faz follow-up até agendar",
   ],
   footer:
     "Você vai pagar menos pela IA genérica. A pergunta é: quanto custa o agendamento que ela deixa escapar?",
