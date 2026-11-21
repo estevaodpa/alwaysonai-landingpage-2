@@ -4,7 +4,7 @@ import { Header } from "./components/sections/Header";
 import { Hero } from "./components/sections/Hero";
 import { LogoMarquee } from "./components/sections/LogoMarquee";
 import { CasesReais } from "./components/sections/CasesReais";
-import { Features } from "./components/sections/Features";
+import { PriceConsciousness } from "./components/sections/PriceConsciousness";
 import { Niches } from "./components/sections/Niches";
 import { Dashboard } from "./components/sections/Dashboard";
 import { Comparison } from "./components/sections/Comparison";
@@ -29,7 +29,7 @@ export default function Home() {
 
           {/* Escuro — até a agenda */}
           <div style={{ background: "var(--bg-dark-2)" }}>
-            <Features />
+            <PriceConsciousness />
             <Niches />
             <Dashboard />
             <Comparison />

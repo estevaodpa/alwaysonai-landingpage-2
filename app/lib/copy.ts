@@ -76,7 +76,43 @@ export const marquee = {
   ],
 };
 
-// ── Recursos ────────────────────────────────────────────────────────────────
+// ── Consciência de preço (substitui a antiga seção Recursos) ───────────────
+export const priceConsciousness = {
+  kicker: "Antes de comparar preços",
+  title: "A barata sai caro.",
+  titleHi: "",
+  support:
+    "IA genérica responde. A sua secretária fecha agendamento. Entenda a diferença antes de decidir.",
+  labelGeneric: "IA genérica de mercado",
+  labelSmart: "Secretária Inteligente alwayson.ai",
+  // NOTA: 40% é exemplo ilustrativo. Trocar por dado real da operação quando houver.
+  statGeneric: {
+    value: 40,
+    suffix: "%",
+    text: "dos agendamentos se perdem em operações que usam IA genérica",
+  },
+  statSmart: {
+    value: 100,
+    suffix: "%",
+    text: "dos contatos são conduzidos até uma decisão — resposta, qualificação e horário",
+  },
+  generic: [
+    "Responde qualquer coisa, sem conhecer a clínica",
+    "Não qualifica quem tem interesse real",
+    "Não conversa com a sua agenda",
+    "Não faz follow-up de quem não responde",
+  ],
+  smart: [
+    "Conhece procedimentos, valores e regras da sua clínica",
+    "Qualifica e separa quem está pronto para agendar",
+    "Marca o horário direto na sua agenda",
+    "Conduz o paciente até o agendamento",
+  ],
+  footer:
+    "Você vai pagar menos pela IA genérica. A pergunta é: quanto custa o agendamento que ela deixa escapar?",
+};
+
+// ── Recursos (mantido para outros usos) ────────────────────────────────────
 export const features = {
   kicker: "O sistema completo",
   title: "Toda a operação de atendimento da sua clínica, dentro do WhatsApp.",
