@@ -28,56 +28,32 @@ export const hero = {
   lead: "Sua clínica pode estar fechada.",
   leadHi: "Mas seus agendamentos não precisam parar.",
 
-  // Cena de abertura — o prejuízo acontecendo, mensagem por mensagem.
-  lossScene: {
-    live: "AO VIVO",
-    counterLabel: "DINHEIRO QUE ESCOA POR MÊS",
-    counterValue: 3480,
-    drainLabel: "Mensagens sem resposta escoando para o ralo",
-    contexts: [
-      {
-        time: "18h42",
-        tag: "PÓS-EXPEDIENTE",
-        message: "oi, tem vaga amanhã?",
-        reply: "sem resposta",
-        loss: 480,
-      },
-      {
-        time: "Sáb · 15h20",
-        tag: "FINAL DE SEMANA",
-        message: "quanto custa o implante?",
-        reply: "sem resposta",
-        loss: 720,
-      },
-      {
-        time: "Dom · 10h05",
-        tag: "FORA DO HORÁRIO",
-        message: "tem horário sábado?",
-        reply: "sem resposta",
-        loss: 1100,
-      },
-      {
-        time: "Seg · 09h12",
-        tag: "DEMORA NA RESPOSTA",
-        message: "quero agendar avaliação",
-        reply: "respondido 3h depois",
-        loss: 1180,
-      },
-    ],
-  },
-
-  promiseTitle: [
-    { t: "Tenha uma " },
-    { t: "Secretária Inteligente", hi: true },
-    { t: " que:" },
-  ] as Seg[],
+  promiseTitle: "Tenha uma Secretária Inteligente que:",
   topics: [
-    "Responde em segundos",
-    "Conversa naturalmente",
-    "Tira dúvidas",
-    "Transforma interesse em consultas agendadas",
-    "Atende 24 horas por dia no WhatsApp",
-    "Com o jeito de atender da sua clínica",
+    {
+      title: "Responde em segundos",
+      detail: "O paciente não fica esperando. A conversa começa na hora.",
+    },
+    {
+      title: "Conversa naturalmente",
+      detail: "Entende a pergunta e responde como uma pessoa da equipe.",
+    },
+    {
+      title: "Tira dúvidas",
+      detail: "Explica procedimento, valor e forma de pagamento.",
+    },
+    {
+      title: "Transforma interesse em consultas agendadas",
+      detail: "Do primeiro “oi” ao horário marcado na agenda.",
+    },
+    {
+      title: "Atende 24 horas por dia no WhatsApp",
+      detail: "Inclusive depois do expediente e no fim de semana.",
+    },
+    {
+      title: "Com o jeito de atender da sua clínica",
+      detail: "Com as suas regras, os seus valores e o seu tom de voz.",
+    },
   ],
   cta: "Falar com um especialista",
 };
