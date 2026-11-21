@@ -27,14 +27,55 @@ export const nav = {
 export const hero = {
   lead: "Sua clínica pode estar fechada.",
   leadHi: "Mas seus agendamentos não precisam parar.",
-  opportunity:
-    "Cada paciente atendido na hora certa é uma oportunidade a mais de faturamento.",
-  promise:
-    "Imagine uma Secretária Inteligente que responde em segundos, conversa naturalmente, tira dúvidas e transforma o interesse em consultas agendadas.",
-  support:
-    "Tudo no WhatsApp, 24 horas por dia, com o jeito de atender da sua clínica.",
-  closing:
-    "Enquanto sua equipe cuida dos pacientes, sua agenda continua trabalhando.",
+
+  // Cena de abertura — a dor antes da promessa.
+  lossScene: {
+    badge: "O custo da demora",
+    counterLabel: "DINHEIRO QUE ESCOA POR MÊS",
+    counterValue: 3480,
+    drainLabel: "RALO DO ATENDIMENTO",
+    contexts: [
+      {
+        time: "18h42",
+        tag: "PÓS-EXPEDIENTE",
+        line: "O paciente escreveu. Ninguém respondeu.",
+        loss: "− R$ 480 por atendimento perdido",
+      },
+      {
+        time: "Sábado · 15h20",
+        tag: "FINAL DE SEMANA",
+        line: "A clínica fechou. O interesse não espera.",
+        loss: "− R$ 720 em um só fim de semana",
+      },
+      {
+        time: "Domingo · 10h05",
+        tag: "FORA DO HORÁRIO",
+        line: "Quem poderia agendar agora esfria até segunda.",
+        loss: "− R$ 1.100 em consultas que não voltam",
+      },
+      {
+        time: "Segunda · 09h12",
+        tag: "DEMORA NA RESPOSTA",
+        line: "O concorrente respondeu primeiro.",
+        loss: "− R$ 980 para a concorrência",
+      },
+    ],
+  },
+
+  promiseTitle: [
+    { t: "Tenha uma " },
+    { t: "Secretária Inteligente", hi: true },
+    { t: " que:" },
+  ] as Seg[],
+  topics: [
+    "Responde em segundos",
+    "Conversa naturalmente",
+    "Tira dúvidas",
+    "Transforma interesse em consultas agendadas",
+    "Atende 24 horas por dia no WhatsApp",
+    "Com o jeito de atender da sua clínica",
+  ],
+  cta: "Falar com um especialista",
 };
 
 // ── Marquee de parceiras ────────────────────────────────────────────────────

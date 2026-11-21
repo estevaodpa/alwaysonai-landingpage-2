@@ -5,7 +5,10 @@ import { motion } from "framer-motion";
 import { SmartphoneFrame } from "../product/SmartphoneFrame";
 import { PhoneVideo } from "../product/PhoneVideo";
 import { HeroEvents } from "./HeroEvents";
+import { HeroLossScene } from "./HeroLossScene";
+import { useDiagnostic } from "../DiagnosticProvider";
 import { hero } from "../../lib/copy";
+import { trackCtaClick } from "../../lib/analytics";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -18,6 +21,7 @@ const STAGE_TIMES = [16, 25, 33, 46];
 
 export function Hero() {
   const [videoTime, setVideoTime] = useState(0);
+  const { open } = useDiagnostic();
   const onTime = useCallback((t: number) => setVideoTime(t), []);
 
   let activeAction = -1;
@@ -39,15 +43,25 @@ export function Hero() {
 
       <div
         className="relative lp-container flex flex-col items-center"
-        style={{ gap: 40, maxWidth: 1520 }}
+        style={{ gap: 38, maxWidth: 1520 }}
       >
+        {/* Cena de abertura — o custo da demora */}
+        <motion.div
+          initial={{ opacity: 0, y: 24, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.06, ease: EASE }}
+          className="w-full"
+          style={{ maxWidth: 1040 }}
+        >
+          <HeroLossScene />
+        </motion.div>
+
         {/* Copy — coreografia de abertura */}
         <div className="flex flex-col items-center text-center w-full" style={{ maxWidth: 1040 }}>
-          {/* Linha 1 — revelação por máscara */}
           <motion.h1
             initial={{ clipPath: "inset(0 0 100% 0)", y: 26, opacity: 0 }}
             animate={{ clipPath: "inset(0 0 0% 0)", y: 0, opacity: 1 }}
-            transition={{ duration: 0.85, delay: 0.12, ease: EASE }}
+            transition={{ duration: 0.85, delay: 0.2, ease: EASE }}
             className="font-semibold"
             style={{
               fontSize: "clamp(2.1rem, 4.6vw, 3.4rem)",
@@ -59,11 +73,10 @@ export function Hero() {
             {hero.lead}
           </motion.h1>
 
-          {/* Linha 2 — revelação em cascata */}
           <motion.h2
             initial={{ clipPath: "inset(0 0 100% 0)", y: 26, opacity: 0 }}
             animate={{ clipPath: "inset(0 0 0% 0)", y: 0, opacity: 1 }}
-            transition={{ duration: 0.85, delay: 0.28, ease: EASE }}
+            transition={{ duration: 0.85, delay: 0.34, ease: EASE }}
             className="font-semibold"
             style={{
               fontSize: "clamp(2.1rem, 4.6vw, 3.4rem)",
@@ -76,71 +89,107 @@ export function Hero() {
             Mas seus <span className="lp-accent">agendamentos</span> não precisam parar.
           </motion.h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5, ease: EASE }}
-            className="mt-6 font-medium"
-            style={{
-              fontSize: "clamp(1.05rem, 1.8vw, 1.3rem)",
-              lineHeight: 1.5,
-              color: "#2f3238",
-              maxWidth: 780,
-            }}
-          >
-            Cada paciente atendido na hora certa é uma oportunidade a mais de{" "}
-            <span className="lp-accent">faturamento</span>.
-          </motion.p>
-
-          {/* Destaque — entra com escala e brilho */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96, y: 16 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.68, ease: EASE }}
-            className="mt-9 w-full"
-            style={{ maxWidth: 860 }}
-          >
-            <p
-              style={{
-                fontSize: "clamp(1.125rem, 2.1vw, 1.5rem)",
-                lineHeight: 1.55,
-                color: "#2f3238",
-              }}
-            >
-              Imagine uma{" "}
-              <span className="brand-highlight">Secretária Inteligente</span> que responde em
-              segundos, conversa naturalmente, tira dúvidas e transforma o interesse em
-              consultas agendadas.
-            </p>
-          </motion.div>
-
+          {/* A virada — título + tópicos animados */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.86, ease: EASE }}
-            className="mt-7 flex flex-col items-center gap-3"
+            transition={{ duration: 0.6, delay: 0.54, ease: EASE }}
+            className="mt-9"
           >
             <p
-              className="font-medium"
-              style={{ fontSize: "1.0625rem", color: "#2f3238" }}
+              className="font-semibold"
+              style={{
+                fontSize: "clamp(1.125rem, 2.1vw, 1.5rem)",
+                lineHeight: 1.45,
+                color: "#2f3238",
+              }}
             >
-              Tudo no WhatsApp, <span className="lp-accent">24 horas por dia</span>, com o jeito
-              de atender da sua clínica.
-            </p>
-            <p
-              className="text-sm"
-              style={{ color: "#6d6f74", maxWidth: 620 }}
-            >
-              {hero.closing}
+              {hero.promiseTitle.map((seg, i) =>
+                seg.hi ? (
+                  <span key={i} className="brand-highlight">
+                    {seg.t}
+                  </span>
+                ) : (
+                  <span key={i}>{seg.t}</span>
+                ),
+              )}
             </p>
           </motion.div>
+
+          <div
+            className="mt-6 grid w-full grid-cols-1 gap-2.5 sm:grid-cols-2"
+            style={{ maxWidth: 840 }}
+          >
+            {hero.topics.map((topic, i) => (
+              <motion.div
+                key={topic}
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.66 + i * 0.08, ease: EASE }}
+                className="relative flex w-full min-w-0 items-center gap-3 overflow-hidden rounded-xl border px-4 py-3 text-left sm:px-5"
+                style={{
+                  background: "rgba(255,255,255,0.76)",
+                  borderColor: "rgba(24,25,28,0.08)",
+                  boxShadow: "0 8px 24px rgba(16,40,80,0.04)",
+                  backdropFilter: "blur(6px)",
+                }}
+              >
+                <span
+                  className="relative z-10 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg"
+                  style={{ background: "var(--brand-grad)", color: "#fff" }}
+                  aria-hidden="true"
+                >
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                    <path
+                      d="M3.3 8.4 6.3 11.4 12.7 4.8"
+                      stroke="currentColor"
+                      strokeWidth="1.9"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+                <span
+                  className="relative z-10 text-[0.9375rem] font-semibold leading-snug"
+                  style={{ color: "#18191c" }}
+                >
+                  {topic}
+                </span>
+                <motion.span
+                  className="pointer-events-none absolute inset-y-0 left-0 w-1/3"
+                  style={{
+                    background:
+                      "linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent)",
+                  }}
+                  initial={{ x: "-120%" }}
+                  animate={{ x: ["-120%", "420%"] }}
+                  transition={{ duration: 1.1, delay: 1 + i * 0.1, ease: "easeInOut" }}
+                  aria-hidden="true"
+                />
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.button
+            type="button"
+            onClick={() => {
+              trackCtaClick("hero");
+              open();
+            }}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.16, ease: EASE }}
+            className="lp-btn mt-8 !px-7 !py-4"
+          >
+            {hero.cta}
+          </motion.button>
         </div>
 
         {/* Rótulos estáticos + celular com vídeo */}
         <motion.div
           initial={{ opacity: 0, y: 50, scale: 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.9, delay: 1.0, ease: EASE }}
+          transition={{ duration: 0.9, delay: 1.3, ease: EASE }}
           className="relative flex flex-col items-center w-full"
           style={{ maxWidth: 1280 }}
         >
