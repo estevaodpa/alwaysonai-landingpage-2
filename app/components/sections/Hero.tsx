@@ -107,7 +107,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7, ease: EASE }}
-            className="lp-btn mt-8 !px-7 !py-4"
+            className="lp-btn mt-8 w-full max-w-full !whitespace-normal !px-4 !py-4 !text-sm sm:w-auto sm:!px-7 sm:!text-base"
           >
             {hero.cta}
           </motion.button>
