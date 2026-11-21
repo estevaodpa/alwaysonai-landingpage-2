@@ -31,28 +31,28 @@ export const hero = {
   promiseTitle: "Tenha uma Secretária Inteligente que:",
   topics: [
     {
-      title: "Responde em segundos",
-      detail: "O paciente não fica esperando. A conversa começa na hora.",
+      title: "Ninguém fica esperando.",
+      detail: "A conversa começa no segundo em que o paciente escreve.",
     },
     {
-      title: "Conversa naturalmente",
-      detail: "Entende a pergunta e responde como uma pessoa da equipe.",
+      title: "Parece gente da sua equipe.",
+      detail: "Entende a pergunta e responde do jeito que você conversa.",
     },
     {
-      title: "Tira dúvidas",
-      detail: "Explica procedimento, valor e forma de pagamento.",
+      title: "Dúvida? Resolvida na hora.",
+      detail: "Procedimento, valor e pagamento explicados ali mesmo.",
     },
     {
-      title: "Transforma interesse em consultas agendadas",
-      detail: "Do primeiro “oi” ao horário marcado na agenda.",
+      title: "Do “oi” ao agendamento.",
+      detail: "O interesse vira horário marcado sem ninguém encostar no celular.",
     },
     {
-      title: "Atende 24 horas por dia no WhatsApp",
-      detail: "Inclusive depois do expediente e no fim de semana.",
+      title: "Aberto dia e noite. Fim de semana também.",
+      detail: "O paciente escreve quando quer. A resposta não espera o expediente.",
     },
     {
-      title: "Com o jeito de atender da sua clínica",
-      detail: "Com as suas regras, os seus valores e o seu tom de voz.",
+      title: "Fala como a sua clínica fala.",
+      detail: "As suas regras, os seus valores, o seu tom de voz.",
     },
   ],
   cta: "Falar com um especialista",
@@ -145,11 +145,16 @@ export const steps = {
 
 // ── Nichos ──────────────────────────────────────────────────────────────────
 export const niches = {
-  kicker: "Qualquer clínica",
+  kicker: "Seus dados, na hora",
   title: "Se o seu paciente pergunta,",
-  titleHi: "a IA responde.",
+  titleHi: "você enxerga tudo.",
   support:
-    "Clínica, consultório ou prestador de serviço: as perguntas se repetem. Cada uma sem resposta é um paciente que vai para o concorrente.",
+    "Cada pergunta vira informação visível. Você deixa de depender de memória e achismo e passa a decidir com números — enquanto a conversa acontece.",
+  metrics: [
+    { label: "PERGUNTAS RESPONDIDAS", value: "325", note: "no último mês, sem ninguém digitar" },
+    { label: "PACIENTES QUALIFICADOS", value: "87%", note: "com interesse identificado antes de falar com a equipe" },
+    { label: "CONSULTAS AGENDADAS", value: "64", note: "marcadas direto pelo WhatsApp, sem retrabalho" },
+  ],
   items: [
     {
       name: "Odontologia",
@@ -177,11 +182,12 @@ export const niches = {
 
 // ── Painel / dashboard ──────────────────────────────────────────────────────
 export const dashboard = {
-  kicker: "A visão do dono",
-  title: "Tudo que acontece no atendimento,",
-  titleHi: "organizado em um só lugar.",
+  kicker: "CRM sem complicação",
+  badge: "Tão simples que qualquer pessoa da equipe usa de primeira",
+  title: "Tudo se organiza sozinho.",
+  titleHi: "Sem planilha.",
   support:
-    "Um painel da sua clínica, atualizado automaticamente conforme as conversas acontecem. Você acompanha os leads, interesses, objeções e agendamentos sem abrir conversa por conversa.",
+    "Cada mensagem vira um cartão, cada interesse ganha uma etapa, cada agendamento aparece na hora. Sem ninguém precisar aprender sistema novo — é só olhar.",
   columns: [
     { title: "Novo contato", count: 2, note: "Acabou de entrar em contato" },
     { title: "Conversando", count: 32, note: "Tirando dúvidas e conhecendo a clínica" },

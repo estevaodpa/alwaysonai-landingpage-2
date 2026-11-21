@@ -62,6 +62,27 @@ export function Dashboard() {
               {dashboard.support}
             </p>
           </Reveal>
+          <Reveal delay={0.18}>
+            <span
+              className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold"
+              style={{
+                background: "rgba(0,168,255,0.1)",
+                border: "1px solid rgba(0,168,255,0.3)",
+                color: "#ffffff",
+              }}
+            >
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path
+                  d="M3 8.4 6.3 11.7 13 5"
+                  stroke="#4dc3ff"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              {dashboard.badge}
+            </span>
+          </Reveal>
         </div>
 
         <Reveal delay={0.14}>
