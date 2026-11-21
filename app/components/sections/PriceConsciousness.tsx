@@ -1,7 +1,14 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import {
+  animate,
+  motion,
+  useInView,
+  useMotionValue,
+  useMotionValueEvent,
+  useReducedMotion,
+} from "framer-motion";
 import { priceConsciousness as copy } from "../../lib/copy";
 import { Reveal } from "../ui/primitives";
 
@@ -20,10 +27,26 @@ function CountStat({
   start: boolean;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
+  const counter = useMotionValue(0);
+  const reduced = useReducedMotion();
+
+  // Sempre renderiza 0 no HTML (SSR e cliente); anima via DOM depois da montagem.
+  useEffect(() => {
+    if (!start) return;
+    if (reduced) {
+      if (ref.current) ref.current.textContent = String(value);
+      return;
+    }
+    const controls = animate(counter, value, { duration: 1.1, ease: "easeOut" });
+    return () => controls.stop();
+  }, [start, value, counter, reduced]);
+
+  useMotionValueEvent(counter, "change", (v) => {
+    if (ref.current) ref.current.textContent = String(Math.round(v));
+  });
 
   return (
     <span
-      ref={ref}
       className="block font-extrabold leading-none tabular-nums"
       style={{
         fontSize: "clamp(2.5rem, 6vw, 3.75rem)",
@@ -31,7 +54,7 @@ function CountStat({
         color: tone === "bad" ? "#fca5a5" : "#ffffff",
       }}
     >
-      {start ? value : 0}
+      <span ref={ref}>0</span>
       <motion.span
         style={{ fontSize: "0.5em", marginLeft: 2 }}
         initial={{ opacity: 0 }}
